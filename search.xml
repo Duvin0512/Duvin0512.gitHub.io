@@ -8,7 +8,7 @@
       <link href="/2020/05/28/test/"/>
       <url>/2020/05/28/test/</url>
       
-        <content type="html"><![CDATA[<p>&lt; !–more–&gt;</p><p>test</p>]]></content>
+        <content type="html"><![CDATA[<a id="more"></a><p>test</p>]]></content>
       
       
       
