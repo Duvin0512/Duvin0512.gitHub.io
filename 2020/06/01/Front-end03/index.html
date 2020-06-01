@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -18,8 +16,19 @@
 
   <!-- 页面元数据 -->
   
-    <title>Archive: 2020/5 - Duvin&#39;s Blog</title>
+    <title>前端02-HTML标签(下) - Duvin&#39;s Blog</title>
   
+    <meta name="keywords" content="HTML5,CSS3">
+  
+  
+    <meta name="description" content="
+书写表格
+无序列表
+常用input表单类型
+下拉列表表单
+使用表单元素实现注册页面
+查阅W3C文档
+">
   
 
   <!-- feed -->
@@ -72,91 +81,7 @@
 
 <body>
   
-  <div class="cover-wrapper">
-    
-      <cover class='cover  half'>
-        <div class='cover-body'>
-  <div class='a'>
-    
-    
-      <p class="title">Duvin</p>
-    
-    
-      <p class="subtitle">Whatever is worth doing is worth doing well.</p>
-    
-  </div>
-  <div class='b'>
-    
-      <div class="m_search">
-        <form name="searchform" class="form u-search-form">
-          <input type="text" class="input u-search-input" placeholder="专注学习和创造" />
-          <i class="icon fas fa-search fa-fw"></i>
-        </form>
-      </div>
-    
-    <div class='menu navigation'>
-      <ul class='cover-list-h'>
-        
-          
-            <li>
-              <a class="nav home"
-                href="/"
-                
-                
-                id="home">
-                <i class='fas fa-home fa-fw'></i>主页
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/archives/"
-                
-                
-                id="archives">
-                <i class='fas fa-archive fa-fw'></i>归档
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/categories/"
-                
-                
-                id="categories">
-                <i class='fas fa-folder-open fa-fw'></i>分类
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/tags/"
-                
-                
-                id="tags">
-                <i class='fas fa-tags fa-fw'></i>标签
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="/about/"
-                
-                
-                id="about">
-                <i class='fas fa-info-circle fa-fw'></i>关于
-              </a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-</div>
-
-      </cover>
-    
-    <div id="loading-bar-wrapper">
+  <div id="loading-bar-wrapper">
   <div id="loading-bar"></div>
 </div>
 <header class="l_header shadow blur">
@@ -377,34 +302,18 @@
 
 <script>setLoadingBarProgress(40);</script>
 
-  </div>
 
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper'>
       
 
 <div class='l_main'>
-	
-		
-  <section class="post-list ">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
   
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -414,11 +323,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2020/05/30/Front-end02/">
-      前端02-HTML标签(上)
+  <h1 class="title">
+    <a href="/2020/06/01/Front-end03/">
+      前端02-HTML标签(下)
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -454,14 +363,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 30, 2020</p>
+    <p>发布于：Jun 1, 2020</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -479,299 +383,132 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>HTML语法规范</li>
-<li>HTML基本结构标签</li>
-<li>HTML常用标签</li>
-<li>HTML中的注释和特殊字符</li>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <ul>
+<li>书写表格</li>
+<li>无序列表</li>
+<li>常用input表单类型</li>
+<li>下拉列表表单</li>
+<li>使用表单元素实现注册页面</li>
+<li>查阅W3C文档</li>
 </ul>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/30/Front-end02/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+<a id="more"></a>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
+<h1 id="1-表格标签"><a href="#1-表格标签" class="headerlink" title="1 表格标签"></a>1 表格标签</h1><h2 id="1-1-表格的基本语法"><a href="#1-1-表格的基本语法" class="headerlink" title="1.1 表格的基本语法"></a>1.1 表格的基本语法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>单元格内的文字<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<ol>
+<li><code>&lt;table&gt; &lt;/table&gt;</code>是用于定义表格的标签。</li>
+<li><code>&lt;tr&gt; &lt;/tr&gt;</code>标签用于定义表格中的行.必须嵌套在<code>&lt;table&gt; &lt;/table&gt;</code>标签中。</li>
+<li><code>&lt;td&gt; &lt;/td&gt;</code>用于定义表格中的单元格,必须嵌套在<code>&lt;tr&gt; &lt;/tr&gt;</code>标签中。</li>
+<li>字母td指表格数据table data) ,即数据单元格的内容。</li>
+</ol>
+<h2 id="1-2-表头单元格标签"><a href="#1-2-表头单元格标签" class="headerlink" title="1.2 表头单元格标签"></a>1.2 表头单元格标签</h2><p>一般表头单元格位于表格的第一行或第一列，表头单元格里面的文本内容加相居中显示.</p>
+<p><code>&lt;th&gt;</code>标签表示HTML表格的表头部分(table head的缩写)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/05/29/Front-end01/">
-      前端01-HTML简介
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
-    <p>Duvin</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>前端</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 29, 2020</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>网页的基本组成</li>
-<li>常用浏览器</li>
-<li>Web标准</li>
+<h2 id="1-3-表格属性"><a href="#1-3-表格属性" class="headerlink" title="1.3 表格属性"></a>1.3 表格属性</h2><p>表格标签这部分属性实际开发不常用,后面通过CSS来设置.</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>align</td>
+<td>left. center. right</td>
+<td>规定表格相对周围元素的对齐方式。</td>
+</tr>
+<tr>
+<td>border</td>
+<td>1或-</td>
+<td>规定表格单元是否拥有边框，默认为””，表示没有边框</td>
+</tr>
+<tr>
+<td>elladding</td>
+<td>像素值</td>
+<td>规定单元边汨与其内容之间的空白，默认1像素。</td>
+</tr>
+<tr>
+<td>cellspacing</td>
+<td>像素值</td>
+<td>规定单元格之间的空白，默认2像素。</td>
+</tr>
+<tr>
+<td>width</td>
+<td>像素值或百分比</td>
+<td>规定表格的宽度。</td>
+</tr>
+</tbody></table>
+<h2 id="1-4-表格结构标签"><a href="#1-4-表格结构标签" class="headerlink" title="1.4 表格结构标签"></a>1.4 表格结构标签</h2><ol>
+<li><code>&lt;thead&gt; &lt;/thead&gt;</code>:用于定义表格的头部。&lt;<code>thead&gt;</code>内部必须拥有<code>&lt;tr&gt;</code>标签。一般是位于第一行。</li>
+<li><code>&lt;tbody&gt; &lt;/tbody&gt;</code>:用于定义表格的主体,主要用于放数据本体。</li>
+<li>以上标签都是放在<code>&lt;table&gt; &lt;/table&gt;</code>标签中。</li>
+</ol>
+<h2 id="1-5-合并单元格"><a href="#1-5-合并单元格" class="headerlink" title="1.5 合并单元格"></a>1.5 合并单元格</h2><p><strong>合并单元格方式</strong>:</p>
+<ul>
+<li>跨行合并: rowspan=”合并单元格的个数”</li>
+<li>跨列合并: colspan=’合并单元格的个数”</li>
 </ul>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/29/Front-end01/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+<p><strong>目标单元格</strong>:<strong>(写合并代码)</strong></p>
+<ul>
+<li>跨行:最上侧单元格为目标单元格,写合井代码</li>
+<li>跨列:最左侧单元格为目标单元格写合井代码</li>
+</ul>
+<p>合并单元格三步曲:</p>
+<ol>
+<li>先确定是跨行还是跨列合并。</li>
+<li>找到目标单元格写上合井方式=合并的单元格数量。比如: <code>&lt;tdcolspan= &quot;2&quot; &gt; &lt;/td&gt;</code>。</li>
+<li>删除多余的单元格。</li>
+</ol>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
           
-  <h2 class="title">
-    <a href="/2020/05/28/hello-world/">
-      Hello World
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
-    <p>Duvin</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 28, 2020</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/28/hello-world/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-	
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>Duvin</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="https://duvin0512.github.io./"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文作者：Duvin</p>
+
           
         
           
-            <a href="mailto:duvin0512@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="https://github.com/Duvin0512"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=https://duvin0512.github.io./2020/06/01/Front-end03/>https://duvin0512.github.io./2020/06/01/Front-end03/</a></p>
           
         
-          
-            <a href="https://music.163.com/#/playlist?id=814812699"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -781,53 +518,230 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-01T22:19:42+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jun 1, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/HTML5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>HTML5</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CSS3/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>CSS3</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/01/Front-end03/&title=前端02-HTML标签(下) - Duvin's Blog&summary=
+书写表格
+无序列表
+常用input表单类型
+下拉列表表单
+使用表单元素实现注册页面
+查阅W3C文档
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/01/Front-end03/&title=前端02-HTML标签(下) - Duvin's Blog&summary=
+书写表格
+无序列表
+常用input表单类型
+下拉列表表单
+使用表单元素实现注册页面
+查阅W3C文档
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/01/Front-end03/&title=前端02-HTML标签(下) - Duvin's Blog&summary=
+书写表格
+无序列表
+常用input表单类型
+下拉列表表单
+使用表单元素实现注册页面
+查阅W3C文档
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/05/30/Front-end02/'>
+                <p class='title'>前端02-HTML标签(上)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+HTML语法规范
+HTML基本结构标签
+HTML常用标签
+HTML中的注释和特殊字符
+
+
+
+1.HTML语法规范1.1 基本语法概述
+HTML标签是由尖括号包围的关键词,例如&lt;html&...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '前端02-HTML标签(下)',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            id="categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-表格的基本语法"><span class="toc-number">1.</span> <span class="toc-text">1.1 表格的基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-表头单元格标签"><span class="toc-number">2.</span> <span class="toc-text">1.2 表头单元格标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-表格属性"><span class="toc-number">3.</span> <span class="toc-text">1.3 表格属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-表格结构标签"><span class="toc-number">4.</span> <span class="toc-text">1.4 表格结构标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-合并单元格"><span class="toc-number">5.</span> <span class="toc-text">1.5 合并单元格</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/CSS3/" style="font-size: 14px; color: #999">CSS3</a> <a href="/tags/HTML5/" style="font-size: 14px; color: #999">HTML5</a>
-    </div>
-  </section>
-
-
-  
 
   
 
@@ -921,14 +835,6 @@
   </footer>
 
 <script>setLoadingBarProgress(80);</script>
-
-
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
 
 
       <script>setLoadingBarProgress(60);</script>
@@ -1043,6 +949,60 @@
 
 
 
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
 
 
 

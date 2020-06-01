@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>前端02-HTML标签(下)</title>
+      <link href="/2020/06/01/Front-end03/"/>
+      <url>/2020/06/01/Front-end03/</url>
+      
+        <content type="html"><![CDATA[<ul><li>书写表格</li><li>无序列表</li><li>常用input表单类型</li><li>下拉列表表单</li><li>使用表单元素实现注册页面</li><li>查阅W3C文档</li></ul><a id="more"></a><h1 id="1-表格标签"><a href="#1-表格标签" class="headerlink" title="1 表格标签"></a>1 表格标签</h1><h2 id="1-1-表格的基本语法"><a href="#1-1-表格的基本语法" class="headerlink" title="1.1 表格的基本语法"></a>1.1 表格的基本语法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>单元格内的文字<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure><ol><li><code>&lt;table&gt; &lt;/table&gt;</code>是用于定义表格的标签。</li><li><code>&lt;tr&gt; &lt;/tr&gt;</code>标签用于定义表格中的行.必须嵌套在<code>&lt;table&gt; &lt;/table&gt;</code>标签中。</li><li><code>&lt;td&gt; &lt;/td&gt;</code>用于定义表格中的单元格,必须嵌套在<code>&lt;tr&gt; &lt;/tr&gt;</code>标签中。</li><li>字母td指表格数据table data) ,即数据单元格的内容。</li></ol><h2 id="1-2-表头单元格标签"><a href="#1-2-表头单元格标签" class="headerlink" title="1.2 表头单元格标签"></a>1.2 表头单元格标签</h2><p>一般表头单元格位于表格的第一行或第一列，表头单元格里面的文本内容加相居中显示.</p><p><code>&lt;th&gt;</code>标签表示HTML表格的表头部分(table head的缩写)</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="1-3-表格属性"><a href="#1-3-表格属性" class="headerlink" title="1.3 表格属性"></a>1.3 表格属性</h2><p>表格标签这部分属性实际开发不常用,后面通过CSS来设置.</p><table><thead><tr><th>属性名</th><th>属性值</th><th>描述</th></tr></thead><tbody><tr><td>align</td><td>left. center. right</td><td>规定表格相对周围元素的对齐方式。</td></tr><tr><td>border</td><td>1或-</td><td>规定表格单元是否拥有边框，默认为””，表示没有边框</td></tr><tr><td>elladding</td><td>像素值</td><td>规定单元边汨与其内容之间的空白，默认1像素。</td></tr><tr><td>cellspacing</td><td>像素值</td><td>规定单元格之间的空白，默认2像素。</td></tr><tr><td>width</td><td>像素值或百分比</td><td>规定表格的宽度。</td></tr></tbody></table><h2 id="1-4-表格结构标签"><a href="#1-4-表格结构标签" class="headerlink" title="1.4 表格结构标签"></a>1.4 表格结构标签</h2><ol><li><code>&lt;thead&gt; &lt;/thead&gt;</code>:用于定义表格的头部。&lt;<code>thead&gt;</code>内部必须拥有<code>&lt;tr&gt;</code>标签。一般是位于第一行。</li><li><code>&lt;tbody&gt; &lt;/tbody&gt;</code>:用于定义表格的主体,主要用于放数据本体。</li><li>以上标签都是放在<code>&lt;table&gt; &lt;/table&gt;</code>标签中。</li></ol><h2 id="1-5-合并单元格"><a href="#1-5-合并单元格" class="headerlink" title="1.5 合并单元格"></a>1.5 合并单元格</h2><p><strong>合并单元格方式</strong>:</p><ul><li>跨行合并: rowspan=”合并单元格的个数”</li><li>跨列合并: colspan=’合并单元格的个数”</li></ul><p><strong>目标单元格</strong>:<strong>(写合并代码)</strong></p><ul><li>跨行:最上侧单元格为目标单元格,写合井代码</li><li>跨列:最左侧单元格为目标单元格写合井代码</li></ul><p>合并单元格三步曲:</p><ol><li>先确定是跨行还是跨列合并。</li><li>找到目标单元格写上合井方式=合并的单元格数量。比如: <code>&lt;tdcolspan= &quot;2&quot; &gt; &lt;/td&gt;</code>。</li><li>删除多余的单元格。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML5 </tag>
+            
+            <tag> CSS3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>前端02-HTML标签(上)</title>
       <link href="/2020/05/30/Front-end02/"/>
       <url>/2020/05/30/Front-end02/</url>
