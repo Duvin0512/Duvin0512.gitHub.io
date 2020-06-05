@@ -469,8 +469,107 @@ CSS的注释
 
 <h2 id="2-7-focus伪类选择器"><a href="#2-7-focus伪类选择器" class="headerlink" title="2.7 focus伪类选择器"></a>2.7 focus伪类选择器</h2><p>:focus伪类选择器用于选取获得焦点的表单元素。</p>
 <p>焦点就是光标,一般情兄<code>&lt;input&gt;</code>类表单元素才能获取,因此这个选择器也主要针对于表单元素来说。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input:focus &#123;</span><br><span class="line">background-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input: focus &#123;</span><br><span class="line">background-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="2-CSS的元素显示模式"><a href="#2-CSS的元素显示模式" class="headerlink" title="2. CSS的元素显示模式"></a>2. CSS的元素显示模式</h1><h2 id="2-1-什么是元素显示模式"><a href="#2-1-什么是元素显示模式" class="headerlink" title="2.1 什么是元素显示模式"></a>2.1 什么是元素显示模式</h2><p>作用:网页的标签非常多,在不同地方会用到不同类型的标签,了解他们的特点可以更好的布局我们的网页。</p>
+<p>元素显示模式就是元素(标签)以什么方式进行显示,比如<code>&lt;div&gt;</code>自己占一行, 比如一行可以放多个<code>&lt;span&gt;</code>.</p>
+<p>HTML元素一般分为块元素和行内元素两种类型。</p>
+<h2 id="2-2-块元素"><a href="#2-2-块元素" class="headerlink" title="2.2 块元素"></a>2.2 块元素</h2><p>常见的块元素有<code>&lt;h1&gt;~&lt;h6&gt;</code>、<code>&lt;p&gt;</code>、<code>&lt;div&gt;</code>、<code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code>、<code>&lt;li&gt;</code>等,其中<code>&lt;div&gt;</code>标签是最典型的块元素。</p>
+<p>块级元素的特点:</p>
+<ul>
+<li>自己独占-行。</li>
+<li>高度，宽度、外边距以及内边距都可以控制。</li>
+<li>宽度默认是容器(父级宽度)的100%。</li>
+<li>是一个容器及盒子。里面可以放行内或者块级元素。</li>
+</ul>
+<p>注意:</p>
+<ul>
+<li>文字类的元素内不能使用块级元素</li>
+<li><code>&lt;p&gt;</code>标签主要用于存放文字。因此<code>&lt;p&gt;</code>里面不能放块级元素,特别是不能放<code>&lt;div&gt;</code></li>
+<li>同理，<code>&lt;h1&gt;-&lt;h6&gt;</code>等都是文字类块极标签,里面也不能放其他块级元素</li>
+</ul>
+<h2 id="2-2-行内元素"><a href="#2-2-行内元素" class="headerlink" title="2.2 行内元素"></a>2.2 行内元素</h2><p>常见的行内元素有<code>&lt;a&gt;</code>、<code>&lt;strong&gt;</code>、<code>&lt;b&gt;</code>、<code>&lt;em&gt;</code>、<code>&lt;i&gt;</code>、<code>&lt;del&gt;</code>、<code>&lt;s&gt;</code>、<code>&lt;ins&gt;</code>、<code>&lt;u&gt;</code>、<code>&lt;span&gt;</code>等。其中<code>&lt;span&gt;</code>标签是最典型的行内元素。有的地方也将行内元素称为内联元素。</p>
+<p>行内元素的特点:</p>
+<ul>
+<li>相邻行内元素在一行上,一行可以显示多个。</li>
+<li>高、宽直接设置是无效的。</li>
+<li>默认宽度就是它本身内容的宽度。</li>
+<li>行内元素只能容纳文本或其他行内元素。</li>
+</ul>
+<p>注意:</p>
+<ul>
+<li>链接里面不能再放链接</li>
+<li>特殊情况链接<code>&lt;a&gt;</code>里面可以放块级元素。但是给<code>&lt;a&gt;</code>转换一下块级模式最安全</li>
+</ul>
+<h2 id="2-3-行内块元素"><a href="#2-3-行内块元素" class="headerlink" title="2.3 行内块元素"></a>2.3 行内块元素</h2><p>在行内元素中有几个特殊的标签<code>&lt;img/&gt;</code>、<code>&lt;input/&gt;</code>、<code>&lt;td&gt;</code>,它们同时具有块元素和行内元素的特点。有些资料称它们为行内块元素。</p>
+<p>行内块元素的特点:</p>
+<ul>
+<li>和相邻行内元素(行内块)在一行上,但是他们之间会有空白缝随。一行可以显示多个(行内元素特点).</li>
+<li>默认宽度就是它本身内容的宽度(行内元素特点)。</li>
+<li>高度、行高、外边距以及内边距都可以控制(块级元素特点)。</li>
+</ul>
+<h2 id="2-4-元素显示模式转换"><a href="#2-4-元素显示模式转换" class="headerlink" title="2.4 元素显示模式转换"></a>2.4 元素显示模式转换</h2><p>特殊情况下,我们需要元素模式的转换简单理解: 一个模式的元素需要另外一种模式的特性</p>
+<p>比如想要增加链接<code>&lt;a&gt;</code>的触发范围。</p>
+<ul>
+<li>转换为块元素: display: block;</li>
+<li>转换为行内元素: display: inline;</li>
+<li>转换为行内块: display: inline-block;</li>
+</ul>
+<h2 id="2-5-一个小技巧-单行文字垂直居中的代码"><a href="#2-5-一个小技巧-单行文字垂直居中的代码" class="headerlink" title="2.5 一个小技巧 单行文字垂直居中的代码"></a>2.5 一个小技巧 单行文字垂直居中的代码</h2><p>CSS没有提供文字垂直居中的代码。这里可以使用一个小枝巧来实现</p>
+<p>解决方案:<strong>让文字的行高等于盒子的高度</strong>就可以让文字在当前盒子内垂直居中</p>
+<h1 id="3-CSS的背景"><a href="#3-CSS的背景" class="headerlink" title="3. CSS的背景"></a>3. CSS的背景</h1><p>通过CSS背景属性,可以给页面元素添加背景样式。</p>
+<p>背景属性可以设置背景颜色、背景图片、背景平铺、背景图片位置、背景图像固定等。</p>
+<h2 id="3-1-背景颜色"><a href="#3-1-背景颜色" class="headerlink" title="3.1 背景颜色"></a>3.1 背景颜色</h2><p>background-color属性定义了元素的背景颜色。</p>
+<p><code>background-color:颜色值;</code></p>
+<p>一般情况下元素背景颜色默认值是transparent(透明),也可以手动指定背景颜色为透明色。</p>
+<h2 id="3-2-背景图片"><a href="#3-2-背景图片" class="headerlink" title="3.2 背景图片"></a>3.2 背景图片</h2><p>background image属性描述了元素的背景图像。实际开发常见于logo或者一些装饰性的小图片或者是超大的背景图片,优点是非常便于控制位置(精灵图也是一种运用场景)</p>
+<p><code>background-image : none | url (url)</code></p>
+<table>
+<thead>
+<tr>
+<th>参数值</th>
+<th>怍用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>none</td>
+<td>无背景图(默认的)</td>
+</tr>
+<tr>
+<td>url</td>
+<td>使用绝对或相对地址指定背晨图像</td>
+</tr>
+</tbody></table>
+<h2 id="3-3-背景平铺"><a href="#3-3-背景平铺" class="headerlink" title="3.3 背景平铺"></a>3.3 背景平铺</h2><p>如果需要在HTML页面上对背景图像进行平铺。可以使用background-repeat属性。</p>
+<p><code>background-repeat: repeat | no-repeat | repeat-x | repeat-y</code></p>
+<table>
+<thead>
+<tr>
+<th>参数值</th>
+<th>怍用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>repeat</td>
+<td>背景图像在纵向和横向上平铺(默认的)</td>
+</tr>
+<tr>
+<td>no-repeat</td>
+<td>背景图像不平铺</td>
+</tr>
+<tr>
+<td>repeat-x</td>
+<td>背最图像在横向上平铺</td>
+</tr>
+<tr>
+<td>repeat-y</td>
+<td>背景图像在纵向平铺</td>
+</tr>
+</tbody></table>
+<h2 id="3-4-背景图片位置"><a href="#3-4-背景图片位置" class="headerlink" title="3.4 背景图片位置"></a>3.4 背景图片位置</h2><p>利用background position属性可以改变图片在背景中的位置。</p>
+<p><code>background-position: x y;</code></p>
+<p>参数代表的意思是: x坐标和y坐标。可以使用方位名词或者精确单位</p>
+<p>参数值 | 说明<br>length | 百分数|由浮点数字和单位标识符组成的长度值<br>position | top | center | bottom | left | center | right方位名词</p>
 
           
             <div class='article_footer'>
@@ -563,10 +662,10 @@ CSS的注释
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-04T14:05:04+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-05T21:43:37+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 4, 2020</p>
+    <p>更新于：Jun 5, 2020</p>
   </a>
 </div>
 
@@ -662,6 +761,12 @@ CSS的注释
         
           <div class="prev-next">
             
+              <a class='prev' href='/2020/06/04/DataStrAlgo/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>DataStrAlgo</p>
+                <p class='content'>
+</p>
+              </a>
+            
             
               <a class='next' href='/2020/06/03/Frontend04/'>
                 <p class='title'>CSS3样式01<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
@@ -746,7 +851,7 @@ CSS引入方式
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-快速生成HTML结构语法"><span class="toc-number">1.</span> <span class="toc-text">1.1 快速生成HTML结构语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-快速生成CSS样式语法"><span class="toc-number">2.</span> <span class="toc-text">1.2 快速生成CSS样式语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-快速格式化代码"><span class="toc-number">3.</span> <span class="toc-text">1.3 快速格式化代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-什么是复合选择器"><span class="toc-number">4.</span> <span class="toc-text">2.1 什么是复合选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-后代选择器-重要"><span class="toc-number">5.</span> <span class="toc-text">2.2 后代选择器(重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-子选择器-重要"><span class="toc-number">6.</span> <span class="toc-text">2.3 子选择器(重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-并集选择器-重要"><span class="toc-number">7.</span> <span class="toc-text">1.4 并集选择器(重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-伪类选择器"><span class="toc-number">8.</span> <span class="toc-text">2.5 伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-链接伪类选择器"><span class="toc-number">9.</span> <span class="toc-text">2.6 链接伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-focus伪类选择器"><span class="toc-number">10.</span> <span class="toc-text">2.7 focus伪类选择器</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-快速生成HTML结构语法"><span class="toc-number">1.</span> <span class="toc-text">1.1 快速生成HTML结构语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-快速生成CSS样式语法"><span class="toc-number">2.</span> <span class="toc-text">1.2 快速生成CSS样式语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-快速格式化代码"><span class="toc-number">3.</span> <span class="toc-text">1.3 快速格式化代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-什么是复合选择器"><span class="toc-number">4.</span> <span class="toc-text">2.1 什么是复合选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-后代选择器-重要"><span class="toc-number">5.</span> <span class="toc-text">2.2 后代选择器(重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-子选择器-重要"><span class="toc-number">6.</span> <span class="toc-text">2.3 子选择器(重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-并集选择器-重要"><span class="toc-number">7.</span> <span class="toc-text">1.4 并集选择器(重要)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-伪类选择器"><span class="toc-number">8.</span> <span class="toc-text">2.5 伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-链接伪类选择器"><span class="toc-number">9.</span> <span class="toc-text">2.6 链接伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-focus伪类选择器"><span class="toc-number">10.</span> <span class="toc-text">2.7 focus伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-什么是元素显示模式"><span class="toc-number">11.</span> <span class="toc-text">2.1 什么是元素显示模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-块元素"><span class="toc-number">12.</span> <span class="toc-text">2.2 块元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-行内元素"><span class="toc-number">13.</span> <span class="toc-text">2.2 行内元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-行内块元素"><span class="toc-number">14.</span> <span class="toc-text">2.3 行内块元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-元素显示模式转换"><span class="toc-number">15.</span> <span class="toc-text">2.4 元素显示模式转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-一个小技巧-单行文字垂直居中的代码"><span class="toc-number">16.</span> <span class="toc-text">2.5 一个小技巧 单行文字垂直居中的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-背景颜色"><span class="toc-number">17.</span> <span class="toc-text">3.1 背景颜色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-背景图片"><span class="toc-number">18.</span> <span class="toc-text">3.2 背景图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-背景平铺"><span class="toc-number">19.</span> <span class="toc-text">3.3 背景平铺</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-背景图片位置"><span class="toc-number">20.</span> <span class="toc-text">3.4 背景图片位置</span></a></li></ol>
     </div>
   </section>
 
