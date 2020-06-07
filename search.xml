@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>CSS 盒子模型</title>
+      <link href="/2020/06/07/Frontend06/"/>
+      <url>/2020/06/07/Frontend06/</url>
+      
+        <content type="html"><![CDATA[<ul><li>盒子模型的4个组成部分</li><li>利用边框复合写法给元素添加边框</li><li>计算盒子的实际大小</li><li>给盒子设置圆角边框</li><li>给盒子添加阴影</li><li>给文字添加阴影</li></ul><a id="more"></a><h1 id="1-盒子模型"><a href="#1-盒子模型" class="headerlink" title="1. 盒子模型"></a>1. 盒子模型</h1><h2 id="1-1-看透网页布局的本质"><a href="#1-1-看透网页布局的本质" class="headerlink" title="1.1 看透网页布局的本质"></a>1.1 看透网页布局的本质</h2><p>网页布局过程:</p><ol><li>先准备好相关的网页元素。网页元素基本都是盒子Box.</li><li>利用CSS设置好盒子样式,然后摆放到相应位置，</li><li>往盒子里面装内容，<br>网页布局的核心本质:就是利用CSS摆盒子。</li></ol><h2 id="1-2-盒子模型-Box-Model-组成"><a href="#1-2-盒子模型-Box-Model-组成" class="headerlink" title="1.2 盒子模型( Box Model )组成"></a>1.2 盒子模型( Box Model )组成</h2><p>所谓盒子模型:就是把HTML页面中的布局元素看作是一个矩形的盒子,也就是一个盛装内容的容器。</p><p>CSS盒子模型本质上是一个盒子。封装周围的HTML元素,它包括:边框、外边距、内边距、和实际内容</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML5 </tag>
+            
+            <tag> CSS3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>DataStrAlgo</title>
       <link href="/2020/06/04/DataStrAlgo/"/>
       <url>/2020/06/04/DataStrAlgo/</url>
