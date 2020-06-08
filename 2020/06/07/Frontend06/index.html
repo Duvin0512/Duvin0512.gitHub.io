@@ -16,18 +16,16 @@
 
   <!-- 页面元数据 -->
   
-    <title>CSS 盒子模型 - Duvin&#39;s Blog</title>
+    <title>CSS样式03————盒子模型 - Duvin&#39;s Blog</title>
   
     <meta name="keywords" content="HTML5,CSS3">
   
   
     <meta name="description" content="
-盒子模型的4个组成部分
-利用边框复合写法给元素添加边框
-计算盒子的实际大小
-给盒子设置圆角边框
-给盒子添加阴影
-给文字添加阴影
+盒子模型
+圆角边框
+盒子阴影
+文字阴影
 ">
   
 
@@ -325,7 +323,7 @@
           
   <h1 class="title">
     <a href="/2020/06/07/Frontend06/">
-      CSS 盒子模型
+      CSS样式03————盒子模型
     </a>
   </h1>
 
@@ -387,12 +385,10 @@
         <div class="article-entry" itemprop="articleBody">
           
           <ul>
-<li>盒子模型的4个组成部分</li>
-<li>利用边框复合写法给元素添加边框</li>
-<li>计算盒子的实际大小</li>
-<li>给盒子设置圆角边框</li>
-<li>给盒子添加阴影</li>
-<li>给文字添加阴影</li>
+<li>盒子模型</li>
+<li>圆角边框</li>
+<li>盒子阴影</li>
+<li>文字阴影</li>
 </ul>
 <a id="more"></a>
 
@@ -400,10 +396,239 @@
 <ol>
 <li>先准备好相关的网页元素。网页元素基本都是盒子Box.</li>
 <li>利用CSS设置好盒子样式,然后摆放到相应位置，</li>
-<li>往盒子里面装内容，<br>网页布局的核心本质:就是利用CSS摆盒子。</li>
+<li>往盒子里面装内容，</li>
 </ol>
+<p>网页布局的核心本质:就是利用CSS摆盒子。</p>
 <h2 id="1-2-盒子模型-Box-Model-组成"><a href="#1-2-盒子模型-Box-Model-组成" class="headerlink" title="1.2 盒子模型( Box Model )组成"></a>1.2 盒子模型( Box Model )组成</h2><p>所谓盒子模型:就是把HTML页面中的布局元素看作是一个矩形的盒子,也就是一个盛装内容的容器。</p>
 <p>CSS盒子模型本质上是一个盒子。封装周围的HTML元素,它包括:边框、外边距、内边距、和实际内容</p>
+<h2 id="1-3-边框-border"><a href="#1-3-边框-border" class="headerlink" title="1.3 边框(border)"></a>1.3 边框(border)</h2><p>border可以设置元素的边框。边框有三部分组成边框宽度(粗细)、边框样式、边框颜色。</p>
+<p><code>border: border-width | border-style | border-color</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>border-width</td>
+<td>定义边框粗细,单位是px</td>
+</tr>
+<tr>
+<td>border-style</td>
+<td>边框的样式</td>
+</tr>
+<tr>
+<td>border-color</td>
+<td>边框颜色</td>
+</tr>
+</tbody></table>
+<p>CSS 边框属性允许你指定一个元素边框的样式和颜色。</p>
+<p>边框简写:</p>
+<p><code>border: 1px solid red;没有顺序</code></p>
+<p>边框分开写法:</p>
+<p><code>border-top: 1px solid red; /* 只设定上边框，其余同理 */</code></p>
+<h2 id="1-4-表格的细线边框"><a href="#1-4-表格的细线边框" class="headerlink" title="1.4 表格的细线边框"></a>1.4 表格的细线边框</h2><p>border-collapse属性控制浏览器绘制表格边框的方式。它控制相邻单元格的边框。</p>
+<p><code>border-col1apse: collapse;</code></p>
+<ul>
+<li>border-collapse: collapse;表示相邻边框合并在一起</li>
+</ul>
+<h2 id="1-5-边框会影响盒子实际大小"><a href="#1-5-边框会影响盒子实际大小" class="headerlink" title="1.5 边框会影响盒子实际大小"></a>1.5 边框会影响盒子实际大小</h2><p>边框会额外增加盒子的实际大小。</p>
+<ol>
+<li>测量盒子大小的时候不量边框.</li>
+<li>如果测量的时候包含了边框,则需要width/height减去边框宽度</li>
+</ol>
+<h2 id="1-6-内边距-padding"><a href="#1-6-内边距-padding" class="headerlink" title="1.6 内边距(padding)"></a>1.6 内边距(padding)</h2><p>padding属性用于设置内边距,即边框与内容之间的距离。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>padding-left</td>
+<td>左内边距</td>
+</tr>
+<tr>
+<td>padding-right</td>
+<td>右内边距</td>
+</tr>
+<tr>
+<td>padding-top</td>
+<td>上内边距</td>
+</tr>
+<tr>
+<td>padding- bottom</td>
+<td>下内边距</td>
+</tr>
+</tbody></table>
+<p>padding属性(简写属性)可以有一到四个值。</p>
+<table>
+<thead>
+<tr>
+<th>值的个数</th>
+<th>表达意思</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>padding: 5px;</td>
+<td>1个值，代表上下左右都有5像素内边距</td>
+</tr>
+<tr>
+<td>padding: 5px 10px;</td>
+<td>2个值，代表上下内边距是5像素左右内边距是10像素:</td>
+</tr>
+<tr>
+<td>padding: Spx 10px 20px;</td>
+<td>3个值, 代表上内边距5像素左右内边距10像索 下内边距20像索;</td>
+</tr>
+<tr>
+<td>padding: 5px 10px 20px 30px;</td>
+<td>4个值，上是5像素 右10像素下20像素左是30像素顺时针</td>
+</tr>
+</tbody></table>
+<p>当给盒子指定padding值之后,发生了2件事情:</p>
+<ol>
+<li>内容和边框有了距离,添加了内边距。</li>
+<li>padding影响了盒子实际大小。</li>
+</ol>
+<p>也就是说，如果盒子已经有了宽度和高度,此时再指定内边框,会撑大盒子。</p>
+<p><strong>解决方案:</strong></p>
+<p>如果保证盒子跟效果图大小保持一致,则让width/height减去多出来的内边距大小如可。</p>
+<p>如果盒子本身没有指定width/height属性,则此时padding不会撑开盒子大小</p>
+<h2 id="1-7-外边距-margin"><a href="#1-7-外边距-margin" class="headerlink" title="1.7 外边距(margin)"></a>1.7 外边距(margin)</h2><p>margin属性用于设置外边距,即控制盒子和盒子之间的距离。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>margin-left</td>
+<td>左外边距</td>
+</tr>
+<tr>
+<td>margin-right</td>
+<td>右外边距</td>
+</tr>
+<tr>
+<td>margin-top</td>
+<td>上外边距</td>
+</tr>
+<tr>
+<td>margin-bottom</td>
+<td>下外边距</td>
+</tr>
+</tbody></table>
+<p>margin简写方式代表的意义跟padding完全一致。</p>
+<p><strong>外边距典型应用</strong></p>
+<p>外边距可以让块圾盒子水平居中,但是必须满足两个条件:</p>
+<ul>
+<li>盒子必须指定了宽度(width)</li>
+<li>盒子左右的外边距都设置为auto</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.header&#123; width:960px; margin:0 auto;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常见的写法,以下三种都可以:</p>
+<ul>
+<li>margin-left: auto; margin-right auto;</li>
+<li>margin: auto;</li>
+<li>margin: 0 auto;</li>
+</ul>
+<p><strong>注意</strong>:以上方法是让块级元素水平居中。行内元素或者行内块元素水平居中使其父元素添加text-align:center即可。</p>
+<h2 id="1-8-外边距合并"><a href="#1-8-外边距合并" class="headerlink" title="1.8 外边距合并"></a>1.8 外边距合并</h2><p>使用margin定义块元素的重直外边距时,可能会出现外边距的合并。</p>
+<h3 id="1-相邻块元素垂直外边距的合并"><a href="#1-相邻块元素垂直外边距的合并" class="headerlink" title="1. 相邻块元素垂直外边距的合并"></a>1. 相邻块元素垂直外边距的合并</h3><p>当上下相邻的两个块元素(兄弟关系)相遇时,如果上面的元素有下外边距margin-bottom,下面的元素有<br>上外边距margin-top ,则他们之间的重直间距不是margin-bottom与margin-top之和。<strong>取两个值中的较大者</strong>这种现象被称为相邻块元素垂直外边距的合井。</p>
+<p><strong>解决方案:</strong></p>
+<p>尽量只给一个盒子添加margin值。</p>
+<h3 id="2-嵌套块元素垂直外边距的塌陷"><a href="#2-嵌套块元素垂直外边距的塌陷" class="headerlink" title="2. 嵌套块元素垂直外边距的塌陷"></a>2. 嵌套块元素垂直外边距的塌陷</h3><p>对于两个嵌套关系(父子关系)的块元素,父元素有上外边距同时子元素也有上外边距,此时父元素会塌陷较大的外边距值。</p>
+<p>解决方案:</p>
+<ul>
+<li>可以为父元素定义上边框。</li>
+<li>可以为父元素定义上内边距。</li>
+<li>可以为父元素添加owerflow:hidden.</li>
+</ul>
+<p>还有其他方法,比如浮动、固定,绝对定位的盒子不会有塌陷问题</p>
+<h2 id="1-9-清除内外边距"><a href="#1-9-清除内外边距" class="headerlink" title="1.9 清除内外边距"></a>1.9 清除内外边距</h2><p>网页元素很多都带有默认的内外边距,而且不同浏览器默认的也不一致。因此在布局前,首先要清除下网<br>页元素的内外边距。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">padding:0; /* 清除内边距*/</span><br><span class="line">margin:0; /* 清除外边距*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意:行内元素为了照顾兼容性,尽量只设置左右内外边距,不要设置上下内外边距。但是转换为块级和行内块元素就可以了</p>
+<h1 id="2-圆角边框-重点"><a href="#2-圆角边框-重点" class="headerlink" title="2.圆角边框(重点)"></a>2.圆角边框(重点)</h1><p><code>border-radius</code>属性用于设置元素的外边框圆角。</p>
+<p><code>border-radiua :length;</code></p>
+<p>radius半径(圆的半径)原理: (椭)圆与边框的交集形成圆角效果</p>
+<ul>
+<li>参数值可以为数值或百分比的形式</li>
+<li>如果小正方形,想要设置为一个圆,把数值修改为高度或者宽度的一半即可,或者直接写为50%</li>
+<li>如果是个矩形,设置为高度的一半就可以做</li>
+<li>该属性是一个简写属性,可以跟四个值,分别代表左上角、右上角、右下角、左下角</li>
+<li>分开写: border-top-left-radius,border-top-right-radius,border-bottom-right-radius和border-bottom-left-radius</li>
+</ul>
+<h1 id="3-盒子阴影-重点"><a href="#3-盒子阴影-重点" class="headerlink" title="3. 盒子阴影(重点)"></a>3. 盒子阴影(重点)</h1><p>CSS3中新增了盒子阴影。可以使用box- shadow属性为盒子添加阴影。</p>
+<p>box-shadow: h-shadow v-shadow blur spread color inset;</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h-shadow</td>
+<td>必需。水平胡影的位置。允许负值,</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需。重直阴影的位置。允许负值。</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选。横糊距离，</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>可选。阴影的尺寸。</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选。阴影的颜色，请参阅CSsS颜色值，</td>
+</tr>
+<tr>
+<td>inset</td>
+<td>可选。将外部阴影(outset)改为内部阴影。</td>
+</tr>
+</tbody></table>
+<p>注意:</p>
+<ol>
+<li>默认的是外阴影(outset).但是不可以写这个单词否则导致阴影无效</li>
+<li>盒子阴影不占用空间,不会影响其他盒子排列。</li>
+</ol>
+<h1 id="6-文字阴影"><a href="#6-文字阴影" class="headerlink" title="6. 文字阴影"></a>6. 文字阴影</h1><p>在CSS3中,可以使用text-shadow属性将阴影应用于文本。</p>
+<p><code>text-shadow: h-shadow v-shadow blur color;</code></p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h-shadow</td>
+<td>必需。水平阴影的位置，允许负值。</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需，垂直阴影的位置，允许负值。</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选。模糊的距离。</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选。阴影的颜色。参阅CSsS颜色值。</td>
+</tr>
+</tbody></table>
 
           
             <div class='article_footer'>
@@ -496,10 +721,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-07T16:17:19+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-08T11:41:26+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 7, 2020</p>
+    <p>更新于：Jun 8, 2020</p>
   </a>
 </div>
 
@@ -526,13 +751,11 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/07/Frontend06/&title=CSS 盒子模型 - Duvin's Blog&summary=
-盒子模型的4个组成部分
-利用边框复合写法给元素添加边框
-计算盒子的实际大小
-给盒子设置圆角边框
-给盒子添加阴影
-给文字添加阴影
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/07/Frontend06/&title=CSS样式03————盒子模型 - Duvin's Blog&summary=
+盒子模型
+圆角边框
+盒子阴影
+文字阴影
 "
           
           >
@@ -545,13 +768,11 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/07/Frontend06/&title=CSS 盒子模型 - Duvin's Blog&summary=
-盒子模型的4个组成部分
-利用边框复合写法给元素添加边框
-计算盒子的实际大小
-给盒子设置圆角边框
-给盒子添加阴影
-给文字添加阴影
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/07/Frontend06/&title=CSS样式03————盒子模型 - Duvin's Blog&summary=
+盒子模型
+圆角边框
+盒子阴影
+文字阴影
 "
           
           >
@@ -564,13 +785,11 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/07/Frontend06/&title=CSS 盒子模型 - Duvin's Blog&summary=
-盒子模型的4个组成部分
-利用边框复合写法给元素添加边框
-计算盒子的实际大小
-给盒子设置圆角边框
-给盒子添加阴影
-给文字添加阴影
+          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/07/Frontend06/&title=CSS样式03————盒子模型 - Duvin's Blog&summary=
+盒子模型
+圆角边框
+盒子阴影
+文字阴影
 "
           
           >
@@ -595,11 +814,31 @@
         
           <div class="prev-next">
             
-            
-              <a class='next' href='/2020/06/04/DataStrAlgo/'>
-                <p class='title'>DataStrAlgo<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+              <a class='prev' href='/2020/06/08/Frontend07/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>CSS样式04————浮动</p>
                 <p class='content'>
+浮动
+常见网页布局
+清除浮动
+
+
 </p>
+              </a>
+            
+            
+              <a class='next' href='/2020/06/04/Frontend05/'>
+                <p class='title'>CSS3样式02<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+Emmet语法
+CSS的复合选择器
+CSS的元素显示模式
+CSS的背景
+CSS的三大特性
+
+
+
+1. Emmet语法1.1 快速生成HTML结构语法
+生成标签直接输入标签名按tab健即可,比如...</p>
               </a>
             
           </div>
@@ -644,7 +883,7 @@
 
   <script>
     window.subData = {
-      title: 'CSS 盒子模型',
+      title: 'CSS样式03————盒子模型',
       tools: true
     }
   </script>
@@ -670,7 +909,7 @@
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-看透网页布局的本质"><span class="toc-number">1.</span> <span class="toc-text">1.1 看透网页布局的本质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-盒子模型-Box-Model-组成"><span class="toc-number">2.</span> <span class="toc-text">1.2 盒子模型( Box Model )组成</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-看透网页布局的本质"><span class="toc-number">1.</span> <span class="toc-text">1.1 看透网页布局的本质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-盒子模型-Box-Model-组成"><span class="toc-number">2.</span> <span class="toc-text">1.2 盒子模型( Box Model )组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-边框-border"><span class="toc-number">3.</span> <span class="toc-text">1.3 边框(border)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-表格的细线边框"><span class="toc-number">4.</span> <span class="toc-text">1.4 表格的细线边框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-边框会影响盒子实际大小"><span class="toc-number">5.</span> <span class="toc-text">1.5 边框会影响盒子实际大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-内边距-padding"><span class="toc-number">6.</span> <span class="toc-text">1.6 内边距(padding)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-外边距-margin"><span class="toc-number">7.</span> <span class="toc-text">1.7 外边距(margin)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-外边距合并"><span class="toc-number">8.</span> <span class="toc-text">1.8 外边距合并</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-相邻块元素垂直外边距的合并"><span class="toc-number">8.1.</span> <span class="toc-text">1. 相邻块元素垂直外边距的合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-嵌套块元素垂直外边距的塌陷"><span class="toc-number">8.2.</span> <span class="toc-text">2. 嵌套块元素垂直外边距的塌陷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-清除内外边距"><span class="toc-number">9.</span> <span class="toc-text">1.9 清除内外边距</span></a></li></ol>
     </div>
   </section>
 
