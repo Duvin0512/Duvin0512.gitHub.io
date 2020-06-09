@@ -4,13 +4,38 @@
   
     
     <entry>
-      <title>Database02</title>
-      <link href="/2020/06/09/Database02/"/>
-      <url>/2020/06/09/Database02/</url>
+      <title>Database03</title>
+      <link href="/2020/06/09/Database03/"/>
+      <url>/2020/06/09/Database03/</url>
       
         <content type="html"><![CDATA[<a id="more"></a>]]></content>
       
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>DQL语言————基础查询</title>
+      <link href="/2020/06/09/Database02/"/>
+      <url>/2020/06/09/Database02/</url>
+      
+        <content type="html"><![CDATA[<ul><li>语法</li><li>特点</li><li>示例</li></ul><a id="more"></a><h2 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h2><h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1. 语法"></a>1. 语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure><h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h3><ol><li><p>查询列表可以是字段、常量、表达式、函数，也可以是多个</p></li><li><p>查询结果是一个虚拟表</p></li></ol><h3 id="3-示例"><a href="#3-示例" class="headerlink" title="3. 示例"></a>3. 示例</h3><ol><li>查询单个字段</li></ol><p><code>select 字段名 from 表名;</code></p><ol start="2"><li>查询多个字段</li></ol><p><code>select 字段名，字段名 from 表名;</code></p><ol start="3"><li>查询所有字段</li></ol><p><code>select * from 表名</code></p><ol start="4"><li>查询常量</li></ol><p><code>select 常量值;</code></p><p><strong>注意：字符型和日期型的常量值必须用单引号引起来，数值型不需要</strong></p><ol start="5"><li>查询函数</li></ol><p><code>select 函数名(实参列表);</code></p><ol start="6"><li>查询表达式</li></ol><p><code>select 100/1234;</code></p><ol start="7"><li>起别名</li></ol><ul><li>as</li><li>空格</li></ul><ol start="8"><li>去重</li></ol><p><code>select distinct 字段名 from 表名;</code></p><ol start="9"><li><code>+</code></li></ol><p>作用：做加法运算</p><p><code>select 数值+数值;</code> 直接运算</p><p><code>select 字符+数值;</code> 先试图将字符转换成数值，如果转换成功，则继续运算；否则转换成0，再做运算</p><p><code>select null+值;</code> 结果都为null</p><ol start="10"><li>[补充] concat函数</li></ol><p>功能：拼接字符</p><p><code>select concat(字符1，字符2，字符3,...);</code></p><ol start="11"><li>[补充] ifnull函数</li></ol><p>功能：判断某字段或表达式是否为null，如果为null 返回指定的值，否则返回原本的值</p><p><code>select ifnull(commission_pct,0) from employees;</code></p><ol start="12"><li>[补充] isnull函数</li></ol><p>功能：判断某字段或表达式是否为null，如果是，则返回1，否则返回0</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库基础 </tag>
+            
+        </tags>
       
     </entry>
     
