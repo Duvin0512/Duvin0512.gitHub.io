@@ -500,155 +500,26 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-<h1 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h1><h2 id="数据库的好处"><a href="#数据库的好处" class="headerlink" title="数据库的好处"></a>数据库的好处</h2><ol>
-<li>持久化数据到本地</li>
-<li>可以实现结构化查询。方便管理</li>
-</ol>
-<h2 id="数据库根本概念"><a href="#数据库根本概念" class="headerlink" title="数据库根本概念"></a>数据库根本概念</h2><ol>
-<li>DB:数据库,保存一组有组织的数据的容器</li>
-<li>DBMS:数据库管理系统。又称为数据库软件(产品),用于管理DB中的数据</li>
-<li>SQL:结构化查询语言。用于和DBMS通信的语言</li>
-</ol>
-<h2 id="数据库存储数据的特点"><a href="#数据库存储数据的特点" class="headerlink" title="数据库存储数据的特点"></a>数据库存储数据的特点</h2><ol>
-<li>将数据放到表中,表再放到库中</li>
-<li>一个数据库中可以有多个表,每个表都有一个的名字,用来标识自己。表名具有唯一性。</li>
-<li>表具有一些特性,这些特性定义了数据在表中如何存储，类似java中”类”的设计</li>
-<li>表由列组成，也称为字段。所有表都是由一个或多个列组成的，每一列类似java中的”属性”</li>
-<li>表中的数据是按行存储的，每一行类似于java中的”对象”</li>
-</ol>
-<h2 id="MySQL服务的启动和停止"><a href="#MySQL服务的启动和停止" class="headerlink" title="MySQL服务的启动和停止"></a>MySQL服务的启动和停止</h2><ul>
-<li>计算机-右击管理一服务</li>
-<li>通过管理员身份运行</li>
+        <ul>
+<li>数据库的好处</li>
+<li>数据库根本概念</li>
+<li>数据库存储数据的特点</li>
+<li>MySQL服务的启动和停止</li>
+<li>MySQL服务的登录和退出</li>
+<li>MySQL的常见命令</li>
+<li>MySQL的语法规范</li>
+<li>SQL的语言分类</li>
+<li>SQL的常见命令</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net start 服务名(启动服务)</span><br><span class="line">net stop 服务名(停止服务)</span><br></pre></td></tr></table></figure>
-
-<h2 id="MySQL服务的登录和退出"><a href="#MySQL服务的登录和退出" class="headerlink" title="MySQL服务的登录和退出"></a>MySQL服务的登录和退出</h2><ul>
-<li>通过mysql自带的客户端 只限于root用户</li>
-<li>通过windows自带的客户端登录:<br><code>mysql [-h主机名 -P端口号] -u用户名-p密码</code></li>
-</ul>
-<p>退出：<br>exit或ctrl+C</p>
-<h2 id="MySQL的常见命令"><a href="#MySQL的常见命令" class="headerlink" title="MySQL的常见命令"></a>MySQL的常见命令</h2><ol>
-<li><p>查看当前所有的数据库<br><code>show databases;</code></p>
-</li>
-<li><p>打开指定的库<br><code>use 库名</code></p>
-</li>
-<li><p>查看当前库的所有表<br><code>show tables;</code></p>
-</li>
-<li><p>查看其它库的所有表<br><code>show tables from 库名;</code></p>
-</li>
-<li><p>创建表</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">列名列类型,</span><br><span class="line">列名列类型,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li><p>查看表结构<br><code>desc 表名;</code></p>
-</li>
-<li><p>查看服务器的版本</p>
-</li>
-</ol>
-<ul>
-<li><p>登录到mysq1服务端<br><code>select version();</code></p>
-</li>
-<li><p>没有登录到mysq1服务端<br><code>mysql --verslon</code><br>或<br><code>mysql --V</code></p>
-</li>
-</ul>
-<h2 id="MySQL的语法规范"><a href="#MySQL的语法规范" class="headerlink" title="MySQL的语法规范"></a>MySQL的语法规范</h2><ol>
-<li>不区分大小写,但建议关键字大写，表名、列名小写</li>
-<li>每条命令最好用分号结尾</li>
-<li>每条命令根据需要,可以进行缩进或换行</li>
-<li>注释</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行注释: #注释文字</span><br><span class="line">单行注释: --注释文字</span><br><span class="line">多行注释: &#x2F;* 注释文字 *&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h2 id="SQL的语言分类"><a href="#SQL的语言分类" class="headerlink" title="SQL的语言分类"></a>SQL的语言分类</h2><p>DQL（Data Query Language）：数据查询语言</p>
-<p><code>select</code></p>
-<p>DML(Data Manipulate Language):数据操作语言</p>
-<p><code>insert 、update、delete</code></p>
-<p>DDL（Data Define Languge）：数据定义语言</p>
-<p><code>create、drop、alter</code></p>
-<p>TCL（Transaction Control Language）：事务控制语言</p>
-<p><code>commit、rollback</code></p>
-<h2 id="SQL的常见命令"><a href="#SQL的常见命令" class="headerlink" title="SQL的常见命令"></a>SQL的常见命令</h2><p><code>show databases;</code> 查看所有的数据库</p>
-<p><code>use 库名;</code> 打开指定的库</p>
-<p><code>show tables;</code> 显示库中的所有表</p>
-<p><code>show tables from 库名;</code> 显示指定库中的所有表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名(</span><br><span class="line">    字段名 字段类型,</span><br><span class="line">    字段名 字段类型</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>创建表</p>
-<p><code>desc 表名;</code> 查看指定表的结构</p>
-<p><code>select * from 表名;</code> 显示表中的所有数据</p>
-<h1 id="二、DQL语言的学习"><a href="#二、DQL语言的学习" class="headerlink" title="二、DQL语言的学习"></a>二、DQL语言的学习</h1><h2 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h2><h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1. 语法"></a>1. 语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表名;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h3><ol>
-<li><p>查询列表可以是字段、常量、表达式、函数，也可以是多个</p>
-</li>
-<li><p>查询结果是一个虚拟表</p>
-</li>
-</ol>
-<h3 id="3-示例"><a href="#3-示例" class="headerlink" title="3. 示例"></a>3. 示例</h3><ol>
-<li>查询单个字段</li>
-</ol>
-<p><code>select 字段名 from 表名;</code></p>
-<ol start="2">
-<li>查询多个字段</li>
-</ol>
-<p><code>select 字段名，字段名 from 表名;</code></p>
-<ol start="3">
-<li>查询所有字段</li>
-</ol>
-<p><code>select * from 表名</code></p>
-<ol start="4">
-<li>查询常量</li>
-</ol>
-<p><code>select 常量值;</code></p>
-<p><strong>注意：字符型和日期型的常量值必须用单引号引起来，数值型不需要</strong></p>
-<ol start="5">
-<li>查询函数</li>
-</ol>
-<p><code>select 函数名(实参列表);</code></p>
-<ol start="6">
-<li>查询表达式</li>
-</ol>
-<p><code>select 100/1234;</code></p>
-<ol start="7">
-<li>起别名</li>
-</ol>
-<ul>
-<li>as</li>
-<li>空格</li>
-</ul>
-<ol start="8">
-<li>去重</li>
-</ol>
-<p><code>select distinct 字段名 from 表名;</code></p>
-<ol start="9">
-<li><code>+</code></li>
-</ol>
-<p>作用：做加法运算</p>
-<p><code>select 数值+数值;</code> 直接运算</p>
-<p><code>select 字符+数值;</code> 先试图将字符转换成数值，如果转换成功，则继续运算；否则转换成0，再做运算</p>
-<p><code>select null+值;</code> 结果都为null</p>
-<ol start="10">
-<li>[补充] concat函数</li>
-</ol>
-<p>功能：拼接字符</p>
-<p><code>select concat(字符1，字符2，字符3,...);</code></p>
-<ol start="11">
-<li>[补充] ifnull函数</li>
-</ol>
-<p>功能：判断某字段或表达式是否为null，如果为null 返回指定的值，否则返回原本的值</p>
-<p><code>select ifnull(commission_pct,0) from employees;</code></p>
-<ol start="12">
-<li>[补充] isnull函数</li>
-</ol>
-<p>功能：判断某字段或表达式是否为null，如果是，则返回1，否则返回0</p>
-
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2020/06/08/Database01/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
