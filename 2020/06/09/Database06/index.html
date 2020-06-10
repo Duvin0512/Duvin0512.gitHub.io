@@ -16,21 +16,15 @@
 
   <!-- 页面元数据 -->
   
-    <title>数据库相关概念 - Duvin&#39;s Blog</title>
+    <title>DQL语言————分组查询 - Duvin&#39;s Blog</title>
   
     <meta name="keywords" content="数据库基础">
   
   
     <meta name="description" content="
-数据库的好处
-数据库根本概念
-数据库存储数据的特点
-MySQL服务的启动和停止
-MySQL服务的登录和退出
-MySQL的常见命令
-MySQL的语法规范
-SQL的语言分类
-SQL的常见命令
+语法
+特点
+案例
 ">
   
 
@@ -327,8 +321,8 @@ SQL的常见命令
         
           
   <h1 class="title">
-    <a href="/2020/06/08/Database01/">
-      数据库相关概念
+    <a href="/2020/06/09/Database06/">
+      DQL语言————分组查询
     </a>
   </h1>
 
@@ -366,7 +360,7 @@ SQL的常见命令
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 8, 2020</p>
+    <p>发布于：Jun 9, 2020</p>
   </a>
 </div>
 
@@ -390,96 +384,66 @@ SQL的常见命令
         <div class="article-entry" itemprop="articleBody">
           
           <ul>
-<li>数据库的好处</li>
-<li>数据库根本概念</li>
-<li>数据库存储数据的特点</li>
-<li>MySQL服务的启动和停止</li>
-<li>MySQL服务的登录和退出</li>
-<li>MySQL的常见命令</li>
-<li>MySQL的语法规范</li>
-<li>SQL的语言分类</li>
-<li>SQL的常见命令</li>
+<li>语法</li>
+<li>特点</li>
+<li>案例</li>
 </ul>
 <a id="more"></a>
 
-<h1 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h1><h2 id="数据库的好处"><a href="#数据库的好处" class="headerlink" title="数据库的好处"></a>数据库的好处</h2><ol>
-<li>持久化数据到本地</li>
-<li>可以实现结构化查询。方便管理</li>
-</ol>
-<h2 id="数据库根本概念"><a href="#数据库根本概念" class="headerlink" title="数据库根本概念"></a>数据库根本概念</h2><ol>
-<li>DB:数据库,保存一组有组织的数据的容器</li>
-<li>DBMS:数据库管理系统。又称为数据库软件(产品),用于管理DB中的数据</li>
-<li>SQL:结构化查询语言。用于和DBMS通信的语言</li>
-</ol>
-<h2 id="数据库存储数据的特点"><a href="#数据库存储数据的特点" class="headerlink" title="数据库存储数据的特点"></a>数据库存储数据的特点</h2><ol>
-<li>将数据放到表中,表再放到库中</li>
-<li>一个数据库中可以有多个表,每个表都有一个的名字,用来标识自己。表名具有唯一性。</li>
-<li>表具有一些特性,这些特性定义了数据在表中如何存储，类似java中”类”的设计</li>
-<li>表由列组成，也称为字段。所有表都是由一个或多个列组成的，每一列类似java中的”属性”</li>
-<li>表中的数据是按行存储的，每一行类似于java中的”对象”</li>
-</ol>
-<h2 id="MySQL服务的启动和停止"><a href="#MySQL服务的启动和停止" class="headerlink" title="MySQL服务的启动和停止"></a>MySQL服务的启动和停止</h2><ul>
-<li>计算机-右击管理一服务</li>
-<li>通过管理员身份运行</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net start 服务名(启动服务)</span><br><span class="line">net stop 服务名(停止服务)</span><br></pre></td></tr></table></figure>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表</span><br><span class="line">【<span class="keyword">where</span> 筛选条件】</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> 分组的字段</span><br><span class="line">【<span class="keyword">order</span> <span class="keyword">by</span> 排序的字段】;</span><br></pre></td></tr></table></figure>
 
-<h2 id="MySQL服务的登录和退出"><a href="#MySQL服务的登录和退出" class="headerlink" title="MySQL服务的登录和退出"></a>MySQL服务的登录和退出</h2><ul>
-<li>通过mysql自带的客户端 只限于root用户</li>
-<li>通过windows自带的客户端登录:<br><code>mysql [-h主机名 -P端口号] -u用户名-p密码</code></li>
-</ul>
-<p>退出：<br>exit或ctrl+C</p>
-<h2 id="MySQL的常见命令"><a href="#MySQL的常见命令" class="headerlink" title="MySQL的常见命令"></a>MySQL的常见命令</h2><ol>
-<li><p>查看当前所有的数据库<br><code>show databases;</code></p>
-</li>
-<li><p>打开指定的库<br><code>use 库名</code></p>
-</li>
-<li><p>查看当前库的所有表<br><code>show tables;</code></p>
-</li>
-<li><p>查看其它库的所有表<br><code>show tables from 库名;</code></p>
-</li>
-<li><p>创建表</p>
-</li>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
+<li>和分组函数一同查询的字段必须是group by后出现的字段</li>
+<li>筛选分为两类：分组前筛选和分组后筛选</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">列名列类型,</span><br><span class="line">列名列类型,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li><p>查看表结构<br><code>desc 表名;</code></p>
-</li>
-<li><p>查看服务器的版本</p>
-</li>
+<table>
+<thead>
+<tr>
+<th><code></code></th>
+<th>针对的表</th>
+<th>位置</th>
+<th>连接的关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分组前筛选</td>
+<td>原始表</td>
+<td>group by前</td>
+<td>where</td>
+</tr>
+<tr>
+<td>分组后筛选</td>
+<td>group by后的结果集</td>
+<td>group by后</td>
+<td>having</td>
+</tr>
+</tbody></table>
+<p>问题1：分组函数做筛选能不能放在where后面<br>答：不能</p>
+<p>问题2：where——group by——having</p>
+<p>一般来讲，能用分组前筛选的，尽量使用分组前筛选，提高效率</p>
+<ol start="3">
+<li>分组可以按单个字段也可以按多个字段</li>
+<li>可以搭配着排序使用</li>
 </ol>
-<ul>
-<li><p>登录到mysq1服务端<br><code>select version();</code></p>
-</li>
-<li><p>没有登录到mysq1服务端<br><code>mysql --verslon</code><br>或<br><code>mysql --V</code></p>
-</li>
-</ul>
-<h2 id="MySQL的语法规范"><a href="#MySQL的语法规范" class="headerlink" title="MySQL的语法规范"></a>MySQL的语法规范</h2><ol>
-<li>不区分大小写,但建议关键字大写，表名、列名小写</li>
-<li>每条命令最好用分号结尾</li>
-<li>每条命令根据需要,可以进行缩进或换行</li>
-<li>注释</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行注释: #注释文字</span><br><span class="line">单行注释: --注释文字</span><br><span class="line">多行注释: &#x2F;* 注释文字 *&#x2F;</span><br></pre></td></tr></table></figure>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="0-引入：查询每个部门的员工个数"><a href="#0-引入：查询每个部门的员工个数" class="headerlink" title="0. 引入：查询每个部门的员工个数"></a>0. 引入：查询每个部门的员工个数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> employees <span class="keyword">WHERE</span> department_id=<span class="number">90</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="SQL的语言分类"><a href="#SQL的语言分类" class="headerlink" title="SQL的语言分类"></a>SQL的语言分类</h2><p>DQL（Data Query Language）：数据查询语言</p>
-<p><code>select</code></p>
-<p>DML(Data Manipulate Language):数据操作语言</p>
-<p><code>insert 、update、delete</code></p>
-<p>DDL（Data Define Languge）：数据定义语言</p>
-<p><code>create、drop、alter</code></p>
-<p>TCL（Transaction Control Language）：事务控制语言</p>
-<p><code>commit、rollback</code></p>
-<h2 id="SQL的常见命令"><a href="#SQL的常见命令" class="headerlink" title="SQL的常见命令"></a>SQL的常见命令</h2><p><code>show databases;</code> 查看所有的数据库</p>
-<p><code>use 库名;</code> 打开指定的库</p>
-<p><code>show tables;</code> 显示库中的所有表</p>
-<p><code>show tables from 库名;</code> 显示指定库中的所有表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> 表名(</span><br><span class="line">    字段名 字段类型,</span><br><span class="line">    字段名 字段类型</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="1-简单的分组"><a href="#1-简单的分组" class="headerlink" title="1. 简单的分组"></a>1. 简单的分组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例1：查询每个工种的员工平均工资</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(salary),job_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> job_id;</span><br></pre></td></tr></table></figure>
 
-<p>创建表</p>
-<p><code>desc 表名;</code> 查看指定表的结构</p>
-<p><code>select * from 表名;</code> 显示表中的所有数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例2：查询每个位置的部门个数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*),location_id</span><br><span class="line"><span class="keyword">FROM</span> departments</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> location_id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-可以实现分组前的筛选"><a href="#2-可以实现分组前的筛选" class="headerlink" title="2. 可以实现分组前的筛选"></a>2. 可以实现分组前的筛选</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例1：查询邮箱中包含a字符的 每个部门的最高工资</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MAX</span>(salary),department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> email <span class="keyword">LIKE</span> <span class="string">'%a%'</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例2：查询有奖金的每个领导手下员工的平均工资</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(salary),manager_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> manager_id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-分组后筛选"><a href="#3-分组后筛选" class="headerlink" title="3. 分组后筛选"></a>3. 分组后筛选</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例：查询哪个部门的员工个数&gt;5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#①查询每个部门的员工个数</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*),department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">#② 筛选刚才①结果</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*),department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id</span><br><span class="line"></span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*)&gt;<span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例2：每个工种有奖金的员工的最高工资&gt;12000的工种编号和最高工资</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> job_id,<span class="keyword">MAX</span>(salary)</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> job_id</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">MAX</span>(salary)&gt;<span class="number">12000</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例3：领导编号&gt;102的每个领导手下的最低工资大于5000的领导编号和最低工资</span></span><br><span class="line"></span><br><span class="line">manager_id&gt;102</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> manager_id,<span class="keyword">MIN</span>(salary)</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> manager_id</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">MIN</span>(salary)&gt;<span class="number">5000</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-添加排序"><a href="#4-添加排序" class="headerlink" title="4. 添加排序"></a>4. 添加排序</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例：每个工种有奖金的员工的最高工资&gt;6000的工种编号和最高工资,按最高工资升序</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> job_id,<span class="keyword">MAX</span>(salary) m</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> job_id</span><br><span class="line"><span class="keyword">HAVING</span> m&gt;<span class="number">6000</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> m ;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-按多个字段分组"><a href="#5-按多个字段分组" class="headerlink" title="5. 按多个字段分组"></a>5. 按多个字段分组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例：查询每个工种每个部门的最低工资,并按最低工资降序</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MIN</span>(salary),job_id,department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_id,job_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">MIN</span>(salary) <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
 
           
             <div class='article_footer'>
@@ -521,7 +485,7 @@ SQL的常见命令
           
         
           
-            <p>本文永久链接是：<a href=https://duvin0512.github.io./2020/06/08/Database01/>https://duvin0512.github.io./2020/06/08/Database01/</a></p>
+            <p>本文永久链接是：<a href=https://duvin0512.github.io./2020/06/09/Database06/>https://duvin0512.github.io./2020/06/09/Database06/</a></p>
           
         
       </blockquote>
@@ -572,10 +536,10 @@ SQL的常见命令
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-09T20:14:20+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-10T15:21:32+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 9, 2020</p>
+    <p>更新于：Jun 10, 2020</p>
   </a>
 </div>
 
@@ -602,16 +566,10 @@ SQL的常见命令
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/08/Database01/&title=数据库相关概念 - Duvin's Blog&summary=
-数据库的好处
-数据库根本概念
-数据库存储数据的特点
-MySQL服务的启动和停止
-MySQL服务的登录和退出
-MySQL的常见命令
-MySQL的语法规范
-SQL的语言分类
-SQL的常见命令
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/09/Database06/&title=DQL语言————分组查询 - Duvin's Blog&summary=
+语法
+特点
+案例
 "
           
           >
@@ -624,16 +582,10 @@ SQL的常见命令
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/08/Database01/&title=数据库相关概念 - Duvin's Blog&summary=
-数据库的好处
-数据库根本概念
-数据库存储数据的特点
-MySQL服务的启动和停止
-MySQL服务的登录和退出
-MySQL的常见命令
-MySQL的语法规范
-SQL的语言分类
-SQL的常见命令
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/09/Database06/&title=DQL语言————分组查询 - Duvin's Blog&summary=
+语法
+特点
+案例
 "
           
           >
@@ -646,16 +598,10 @@ SQL的常见命令
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/08/Database01/&title=数据库相关概念 - Duvin's Blog&summary=
-数据库的好处
-数据库根本概念
-数据库存储数据的特点
-MySQL服务的启动和停止
-MySQL服务的登录和退出
-MySQL的常见命令
-MySQL的语法规范
-SQL的语言分类
-SQL的常见命令
+          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/09/Database06/&title=DQL语言————分组查询 - Duvin's Blog&summary=
+语法
+特点
+案例
 "
           
           >
@@ -680,38 +626,23 @@ SQL的常见命令
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/06/09/Database02/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>DQL语言————基础查询</p>
+            
+              <a class='next' href='/2020/06/09/Database05/'>
+                <p class='title'>DQL语言————常用函数<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>
-语法
+好处
+调用
 特点
-示例
+分类
 
 
 
-基础查询1. 语法12select 查询列表from 表名;
+常见函数概念：类似于java的方法，将一组逻辑语句封装在方法体中，对外暴露方法名
+好处
+隐藏了实现细节  
+提高代码的重用性
 
-2. 特点
-查询列表可以是字段、常量、表达式、函数，也可以是多个
-
-查询结果是一个虚拟表
-
-
-3. 示例...</p>
-              </a>
-            
-            
-              <a class='next' href='/2020/06/08/Frontend07/'>
-                <p class='title'>CSS样式04————浮动<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>
-浮动
-常见网页布局
-清除浮动
-
-
-
-1. 浮动( float)1.1 传统网页布局的三种方式网页布局的本质————用CSS来摆放盒子。把盒子摆放到相应位置
-CSS提供了三种传统布局方式(简单说...</p>
+调用select 函数名(实参列表...</p>
               </a>
             
           </div>
@@ -756,7 +687,7 @@ CSS提供了三种传统布局方式(简单说...</p>
 
   <script>
     window.subData = {
-      title: '数据库相关概念',
+      title: 'DQL语言————分组查询',
       tools: true
     }
   </script>
@@ -782,7 +713,7 @@ CSS提供了三种传统布局方式(简单说...</p>
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库的好处"><span class="toc-number">1.</span> <span class="toc-text">数据库的好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库根本概念"><span class="toc-number">2.</span> <span class="toc-text">数据库根本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库存储数据的特点"><span class="toc-number">3.</span> <span class="toc-text">数据库存储数据的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL服务的启动和停止"><span class="toc-number">4.</span> <span class="toc-text">MySQL服务的启动和停止</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL服务的登录和退出"><span class="toc-number">5.</span> <span class="toc-text">MySQL服务的登录和退出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的常见命令"><span class="toc-number">6.</span> <span class="toc-text">MySQL的常见命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的语法规范"><span class="toc-number">7.</span> <span class="toc-text">MySQL的语法规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL的语言分类"><span class="toc-number">8.</span> <span class="toc-text">SQL的语言分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL的常见命令"><span class="toc-number">9.</span> <span class="toc-text">SQL的常见命令</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-number">1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特点"><span class="toc-number">2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-number">3.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-引入：查询每个部门的员工个数"><span class="toc-number">3.1.</span> <span class="toc-text">0. 引入：查询每个部门的员工个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-简单的分组"><span class="toc-number">3.2.</span> <span class="toc-text">1. 简单的分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-可以实现分组前的筛选"><span class="toc-number">3.3.</span> <span class="toc-text">2. 可以实现分组前的筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-分组后筛选"><span class="toc-number">3.4.</span> <span class="toc-text">3. 分组后筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-添加排序"><span class="toc-number">3.5.</span> <span class="toc-text">4. 添加排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-按多个字段分组"><span class="toc-number">3.6.</span> <span class="toc-text">5. 按多个字段分组</span></a></li></ol></li></ol>
     </div>
   </section>
 
