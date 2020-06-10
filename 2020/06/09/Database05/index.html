@@ -477,6 +477,9 @@
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">mod(a,b) ：  a-a/b*b</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">mod(-10,-3):-10- (-10)/(-3)*（-3）=-1</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MOD</span>(<span class="number">10</span>,<span class="number">-3</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">10</span>%<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
 
+<ol start="6">
+<li>rand:获取随机数，返回0-1之间的小数</li>
+</ol>
 <h4 id="三、日期函数"><a href="#三、日期函数" class="headerlink" title="三、日期函数"></a>三、日期函数</h4><ol>
 <li>now 返回当前系统日期+时间</li>
 </ol>
@@ -562,8 +565,15 @@
 <td>秒( 00,01,…59 )</td>
 </tr>
 </tbody></table>
-<h4 id="四、其他函数"><a href="#四、其他函数" class="headerlink" title="四、其他函数"></a>四、其他函数</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">VERSION</span>();</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DATABASE</span>();</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">USER</span>();</span><br></pre></td></tr></table></figure>
-
+<ol start="6">
+<li>其他</li>
+</ol>
+<p>datediff:返回两个日期相差的天数<br>monthname:以英文形式返回月<br>year:返回年<br>month：返回月<br>day:返回日<br>hour:小时<br>minute:分钟<br>second：秒</p>
+<h4 id="四、其他函数"><a href="#四、其他函数" class="headerlink" title="四、其他函数"></a>四、其他函数</h4><p>version 当前数据库服务器的版本</p>
+<p>database 当前打开的数据库</p>
+<p>user当前用户</p>
+<p>password(‘字符’)：返回该字符的密码形式</p>
+<p>md5(‘字符’):返回该字符的md5加密形式</p>
 <h4 id="五、流程控制函数"><a href="#五、流程控制函数" class="headerlink" title="五、流程控制函数"></a>五、流程控制函数</h4><ol>
 <li>if函数： if else 的效果</li>
 </ol>
@@ -707,10 +717,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-09T22:37:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-10T21:12:00+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 9, 2020</p>
+    <p>更新于：Jun 10, 2020</p>
   </a>
 </div>
 
@@ -809,10 +819,10 @@
 
 
 
-语法12345select 查询列表from 表【where 筛选条件】group by 分组的字段【order by 排序的字段】;
+分组查询1. 语法12345select 查询列表from 表【where 筛选条件】group by 分组的字段【order by 排序的字段】;
 
-特点
-和分组函数一同查询的字段...</p>
+2. 特点
+和分...</p>
               </a>
             
             
