@@ -393,7 +393,7 @@
 <a id="more"></a>
 
 <h2 id="分页查询-★"><a href="#分页查询-★" class="headerlink" title="分页查询 ★"></a>分页查询 ★</h2><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>当要显示的数据，一页显示不全，需要分页提交sql请求</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表</span><br><span class="line">【<span class="keyword">join</span> <span class="keyword">type</span> <span class="keyword">join</span> 表<span class="number">2</span></span><br><span class="line"><span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">where</span> 筛选条件</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> 分组字段</span><br><span class="line"><span class="keyword">having</span> 分组后的筛选</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 排序的字段】</span><br><span class="line"><span class="keyword">limit</span> 【<span class="keyword">offset</span>,】<span class="keyword">size</span>;</span><br><span class="line"></span><br><span class="line">offset要显示条目的起始索引（起始索引从0开始）</span><br><span class="line">size 要显示的条目个数</span><br></pre></td></tr></table></figure>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表</span><br><span class="line">【<span class="keyword">join</span> <span class="keyword">type</span> <span class="keyword">join</span> 表<span class="number">2</span></span><br><span class="line"><span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">where</span> 筛选条件</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> 分组字段</span><br><span class="line"><span class="keyword">having</span> 分组后的筛选</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 排序的字段】</span><br><span class="line"><span class="keyword">limit</span> 【<span class="keyword">offset</span>,】<span class="keyword">size</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#offset要显示条目的起始索引（起始索引从0开始）</span></span><br><span class="line"><span class="comment">#size 要显示的条目个数</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
 <li>limit语句放在查询语句的最后</li>
@@ -498,10 +498,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-11T23:27:39+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-12T00:16:40+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 11, 2020</p>
+    <p>更新于：Jun 12, 2020</p>
   </a>
 </div>
 
@@ -590,6 +590,22 @@
         
         
           <div class="prev-next">
+            
+              <a class='prev' href='/2020/06/12/Database10/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>DQL语言————联合查询</p>
+                <p class='content'>
+语法
+应用场景
+特点
+案例
+
+
+
+联合查询union 联合 合并：将多条查询语句的结果合并成一个结果
+语法12345查询语句1union查询语句2union...
+
+应用场景要查询的结果来自于...</p>
+              </a>
             
             
               <a class='next' href='/2020/06/10/Database08/'>
