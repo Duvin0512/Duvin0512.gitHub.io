@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>Database15</title>
+      <title>【补充】标识列</title>
       <link href="/2020/06/13/Database15/"/>
       <url>/2020/06/13/Database15/</url>
       
-        <content type="html"><![CDATA[<a id="more"></a>]]></content>
+        <content type="html"><![CDATA[<ul><li>标识列</li></ul><a id="more"></a><h2 id="标识列"><a href="#标识列" class="headerlink" title="标识列"></a>标识列</h2><p>又称为自增长列</p><p>含义：可以不用手动的插入值，系统提供默认的序列值</p><p>特点：</p><ol><li><p>标识列必须和主键搭配吗？不一定，但要求是一个key</p></li><li><p>一个表可以有几个标识列？至多一个！</p></li><li><p>标识列的类型只能是数值型</p></li><li><p>标识列可以通过 SET auto_increment_increment=3;设置步长</p><p> 可以通过 手动插入值，设置起始值</p></li></ol><h3 id="一、创建表时设置标识列"><a href="#一、创建表时设置标识列" class="headerlink" title="一、创建表时设置标识列"></a>一、创建表时设置标识列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> tab_identity;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tab_identity(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span>  ,</span><br><span class="line"><span class="keyword">NAME</span> <span class="built_in">FLOAT</span> <span class="keyword">UNIQUE</span> AUTO_INCREMENT,</span><br><span class="line">seat <span class="built_in">INT</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> tab_identity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab_identity(<span class="keyword">id</span>,<span class="keyword">NAME</span>) <span class="keyword">VALUES</span>(<span class="literal">NULL</span>,<span class="string">'john'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab_identity(<span class="keyword">NAME</span>) <span class="keyword">VALUES</span>(<span class="string">'lucy'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tab_identity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%auto_increment%'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> auto_increment_increment=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库基础 </tag>
+            
+        </tags>
       
     </entry>
     

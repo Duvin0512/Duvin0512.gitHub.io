@@ -16,8 +16,14 @@
 
   <!-- 页面元数据 -->
   
-    <title>Database15 - Duvin&#39;s Blog</title>
+    <title>【补充】标识列 - Duvin&#39;s Blog</title>
   
+    <meta name="keywords" content="数据库基础">
+  
+  
+    <meta name="description" content="
+标识列
+">
   
 
   <!-- feed -->
@@ -314,7 +320,7 @@
           
   <h1 class="title">
     <a href="/2020/06/13/Database15/">
-      Database15
+      【补充】标识列
     </a>
   </h1>
 
@@ -337,6 +343,14 @@
           
             
               
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>数据库</p>
+    </a>
+  </div>
+
 
             
           
@@ -367,7 +381,26 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <a id="more"></a>
+          <ul>
+<li>标识列</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="标识列"><a href="#标识列" class="headerlink" title="标识列"></a>标识列</h2><p>又称为自增长列</p>
+<p>含义：可以不用手动的插入值，系统提供默认的序列值</p>
+<p>特点：</p>
+<ol>
+<li><p>标识列必须和主键搭配吗？不一定，但要求是一个key</p>
+</li>
+<li><p>一个表可以有几个标识列？至多一个！</p>
+</li>
+<li><p>标识列的类型只能是数值型</p>
+</li>
+<li><p>标识列可以通过 SET auto_increment_increment=3;设置步长</p>
+<p> 可以通过 手动插入值，设置起始值</p>
+</li>
+</ol>
+<h3 id="一、创建表时设置标识列"><a href="#一、创建表时设置标识列" class="headerlink" title="一、创建表时设置标识列"></a>一、创建表时设置标识列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> tab_identity;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tab_identity(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span>  ,</span><br><span class="line">	<span class="keyword">NAME</span> <span class="built_in">FLOAT</span> <span class="keyword">UNIQUE</span> AUTO_INCREMENT,</span><br><span class="line">	seat <span class="built_in">INT</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">);</span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> tab_identity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab_identity(<span class="keyword">id</span>,<span class="keyword">NAME</span>) <span class="keyword">VALUES</span>(<span class="literal">NULL</span>,<span class="string">'john'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tab_identity(<span class="keyword">NAME</span>) <span class="keyword">VALUES</span>(<span class="string">'lucy'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tab_identity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%auto_increment%'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> auto_increment_increment=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
 
           
             <div class='article_footer'>
@@ -460,7 +493,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-13T00:44:34+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-13T01:08:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jun 13, 2020</p>
@@ -471,6 +504,9 @@
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数据库基础</p></a></div>
+
 
         
       
@@ -487,7 +523,9 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/13/Database15/&title=Database15 - Duvin's Blog&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/13/Database15/&title=【补充】标识列 - Duvin's Blog&summary=
+标识列
+"
           
           >
           
@@ -499,7 +537,9 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/13/Database15/&title=Database15 - Duvin's Blog&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/13/Database15/&title=【补充】标识列 - Duvin's Blog&summary=
+标识列
+"
           
           >
           
@@ -511,7 +551,9 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/13/Database15/&title=Database15 - Duvin's Blog&summary="
+          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/13/Database15/&title=【补充】标识列 - Duvin's Blog&summary=
+标识列
+"
           
           >
           
@@ -594,7 +636,7 @@ FOREIGN KEY
 
   <script>
     window.subData = {
-      title: 'Database15',
+      title: '【补充】标识列',
       tools: true
     }
   </script>
@@ -609,6 +651,20 @@ FOREIGN KEY
     
     
 
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#标识列"><span class="toc-number">1.</span> <span class="toc-text">标识列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、创建表时设置标识列"><span class="toc-number">1.1.</span> <span class="toc-text">一、创建表时设置标识列</span></a></li></ol></li></ol>
+    </div>
+  </section>
 
 
   
