@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta name="renderer" content="webkit">
@@ -20,7 +16,9 @@
 
   <!-- 页面元数据 -->
   
-    <title>Duvin&#39;s Blog</title>
+    <title>TCL语言————事务 - Duvin&#39;s Blog</title>
+  
+    <meta name="keywords" content="数据库基础">
   
   
 
@@ -303,14 +301,10 @@
 
 <div class='l_main'>
   
-  <section class="post-list ">
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
+
   
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -320,11 +314,11 @@
       <div class="meta" id="header-meta">
         
           
-  <h2 class="title">
-    <a href="/2020/06/01/Frontend03/">
-      前端02-HTML标签(下)
+  <h1 class="title">
+    <a href="/2020/06/13/Database16/">
+      TCL语言————事务
     </a>
-  </h2>
+  </h1>
 
 
         
@@ -347,9 +341,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>前端</p>
+      <p>数据库</p>
     </a>
   </div>
 
@@ -360,14 +354,9 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 1, 2020</p>
+    <p>发布于：Jun 13, 2020</p>
   </a>
 </div>
-
-            
-          
-            
-              
 
             
           
@@ -385,419 +374,128 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>书写表格</li>
-<li>无序列表</li>
-<li>常用input表单类型</li>
-<li>下拉列表表单</li>
-<li>使用表单元素实现注册页面</li>
-<li>查阅W3C文档</li>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <a id="more"></a>
+
+<h2 id="TCL"><a href="#TCL" class="headerlink" title="TCL"></a>TCL</h2><p>Transaction Control Language 事务控制语言</p>
+<p>事务：</p>
+<p>一个或一组sql语句组成一个执行单元，这个执行单元要么全部执行，要么全部不执行。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例：转账</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#张三丰  1000</span></span><br><span class="line"><span class="comment">#郭襄  1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 张三丰的余额=<span class="number">500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'张三丰'</span></span><br><span class="line">意外</span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 郭襄的余额=<span class="number">1500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'郭襄'</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>事务的特性：</strong></p>
+<p><strong>ACID</strong></p>
+<ul>
+<li>原子性：一个事务不可再分割，要么都执行要么都不执行</li>
+<li>一致性：一个事务执行会使数据从一个一致状态切换到另外一个一致状态</li>
+<li>隔离性：一个事务的执行不受其他事务的干扰</li>
+<li>持久性：一个事务一旦提交，则会永久的改变数据库的数据.</li>
 </ul>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/06/01/Frontend03/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/05/30/Frontend02/">
-      前端02-HTML标签(上)
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
-    <p>Duvin</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>前端</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 30, 2020</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>HTML语法规范</li>
-<li>HTML基本结构标签</li>
-<li>HTML常用标签</li>
-<li>HTML中的注释和特殊字符</li>
+<p><strong>事务的创建</strong></p>
+<ul>
+<li><p>隐式事务：事务没有明显的开启和结束的标记</p>
+<p>  比如insert、update、delete语句</p>
+<p>  delete from 表 where id =1;</p>
+</li>
+<li><p>显式事务：事务具有明显的开启和结束的标记</p>
+<p>  前提：必须先设置自动提交功能为禁用</p>
+<p>  set autocommit=0;</p>
+</li>
 </ul>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/30/Frontend02/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#步骤1：开启事务</span></span><br><span class="line"><span class="keyword">set</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">start</span> <span class="keyword">transaction</span>;可选的</span><br><span class="line"><span class="comment">#步骤2：编写事务中的sql语句(select insert update delete)</span></span><br><span class="line">语句1;</span><br><span class="line">语句2;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#步骤3：结束事务</span></span><br><span class="line"><span class="keyword">commit</span>;提交事务</span><br><span class="line"><span class="keyword">rollback</span>;回滚事务</span><br><span class="line"></span><br><span class="line"><span class="keyword">savepoint</span> 节点名;设置保存点</span><br></pre></td></tr></table></figure>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
+<p>事务的隔离级别：</p>
+<table>
+<thead>
+<tr>
+<th><code></code></th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read uncommitted</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>read committed</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>repeatable read</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>serializable</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody></table>
+<p>mysql中默认第三个隔离级别 repeatable read</p>
+<p>oracle中默认第二个隔离级别 read committed</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看隔离级别</span><br><span class="line"><span class="keyword">select</span> @@tx_isolation;</span><br><span class="line">设置隔离级别</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">session</span>|<span class="keyword">global</span> <span class="keyword">transaction</span> <span class="keyword">isolation</span> <span class="keyword">level</span> 隔离级别;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">开启事务的语句;</span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 张三丰的余额=<span class="number">500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'张三丰'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 郭襄的余额=<span class="number">1500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'郭襄'</span></span><br><span class="line">结束事务的语句;</span><br></pre></td></tr></table></figure>
 
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
+<h3 id="1-演示事务的使用步骤"><a href="#1-演示事务的使用步骤" class="headerlink" title="1.演示事务的使用步骤"></a>1.演示事务的使用步骤</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开启事务</span></span><br><span class="line"><span class="keyword">SET</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line"><span class="comment">#编写一组事务的语句</span></span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance = <span class="number">1000</span> <span class="keyword">WHERE</span> username=<span class="string">'张无忌'</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance = <span class="number">1000</span> <span class="keyword">WHERE</span> username=<span class="string">'赵敏'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#结束事务</span></span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br><span class="line"><span class="comment">#commit;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-演示事务对于delete和truncate的处理的区别"><a href="#2-演示事务对于delete和truncate的处理的区别" class="headerlink" title="2.演示事务对于delete和truncate的处理的区别"></a>2.演示事务对于delete和truncate的处理的区别</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">account</span>;</span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-演示savepoint-的使用"><a href="#3-演示savepoint-的使用" class="headerlink" title="3.演示savepoint 的使用"></a>3.演示savepoint 的使用</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">account</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">25</span>;</span><br><span class="line"><span class="keyword">SAVEPOINT</span> a;<span class="comment">#设置保存点</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">account</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">28</span>;</span><br><span class="line"><span class="keyword">ROLLBACK</span> <span class="keyword">TO</span> a;<span class="comment">#回滚到保存点</span></span><br></pre></td></tr></table></figure>
+
           
-  <h2 class="title">
-    <a href="/2020/05/29/Frontend01/">
-      前端01-HTML简介
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
+            <div class='article_footer'>
               
-<div class='new-meta-item author'>
-  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
-    <p>Duvin</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>前端</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 29, 2020</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>网页的基本组成</li>
-<li>常用浏览器</li>
-<li>Web标准</li>
-</ul>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/29/Frontend01/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/05/28/hello-world/">
-      Hello World
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
-    <p>Duvin</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 28, 2020</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/05/28/hello-world/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/page/2/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          3 / 3
-        </p>
-        
-      </div>
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
-
-
-</div>
-<aside class='l_side'>
-  
+                
   
     
     
 
-<section class="widget blogger shadow desktop mobile">
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
   <div class='content'>
     
-      
-        <a class='avatar flat-box' href='/about/'>
-          <img no-lazy src='https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>Duvin</h2>
-        
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
+      <blockquote>
         
           
-            <a href="https://duvin0512.github.io./"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文作者：Duvin</p>
+
           
         
           
-            <a href="mailto:duvin0512@gmail.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
           
         
           
-            <a href="https://github.com/Duvin0512"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
+            <p>本文永久链接是：<a href=https://duvin0512.github.io./2020/06/13/Database16/>https://duvin0512.github.io./2020/06/13/Database16/</a></p>
           
         
-          
-            <a href="https://music.163.com/#/playlist?id=814812699"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
+      </blockquote>
     
   </div>
 </section>
@@ -807,58 +505,213 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget category shadow desktop">
+  <div class='content article-entry'>
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-13T01:18:28+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jun 13, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数据库基础</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/13/Database16/&title=TCL语言————事务 - Duvin's Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/13/Database16/&title=TCL语言————事务 - Duvin's Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/13/Database16/&title=TCL语言————事务 - Duvin's Blog&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/06/13/Database15/'>
+                <p class='title'>【补充】标识列<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+标识列
+
+
+
+标识列又称为自增长列
+含义：可以不用手动的插入值，系统提供默认的序列值
+特点：
+
+标识列必须和主键搭配吗？不一定，但要求是一个key
+
+一个表可以有几个标识列？至多一个！
+
+标识...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'TCL语言————事务',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
     
   <header>
     
-      <a href='categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-            id="categoriesE5898DE7ABAF"
-            ><div class='name'>前端</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
-            id="categoriesE695B0E68DAEE5BA93"
-            ><div class='name'>数据库</div><div class='badge'>(16)</div></a></li>
-        
-      </ul>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCL"><span class="toc-number">1.</span> <span class="toc-text">TCL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-演示事务的使用步骤"><span class="toc-number">1.1.</span> <span class="toc-text">1.演示事务的使用步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-演示事务对于delete和truncate的处理的区别"><span class="toc-number">1.2.</span> <span class="toc-text">2.演示事务对于delete和truncate的处理的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-演示savepoint-的使用"><span class="toc-number">1.3.</span> <span class="toc-text">3.演示savepoint 的使用</span></a></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/CSS3/" style="font-size: 14px; color: #999">CSS3</a> <a href="/tags/HTML5/" style="font-size: 14px; color: #999">HTML5</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/" style="font-size: 24px; color: #555">数据库基础</a>
-    </div>
-  </section>
-
-
-  
 
   
 
@@ -1066,6 +919,60 @@
 
 
 
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
 
 
 

@@ -346,6 +346,173 @@
         
           
   <h2 class="title">
+    <a href="/2020/06/13/Database16/">
+      TCL语言————事务
+    </a>
+  </h2>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
+    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
+    <p>Duvin</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>数据库</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 13, 2020</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+<h2 id="TCL"><a href="#TCL" class="headerlink" title="TCL"></a>TCL</h2><p>Transaction Control Language 事务控制语言</p>
+<p>事务：</p>
+<p>一个或一组sql语句组成一个执行单元，这个执行单元要么全部执行，要么全部不执行。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例：转账</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#张三丰  1000</span></span><br><span class="line"><span class="comment">#郭襄  1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 张三丰的余额=<span class="number">500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'张三丰'</span></span><br><span class="line">意外</span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 郭襄的余额=<span class="number">1500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'郭襄'</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>事务的特性：</strong></p>
+<p><strong>ACID</strong></p>
+<ul>
+<li>原子性：一个事务不可再分割，要么都执行要么都不执行</li>
+<li>一致性：一个事务执行会使数据从一个一致状态切换到另外一个一致状态</li>
+<li>隔离性：一个事务的执行不受其他事务的干扰</li>
+<li>持久性：一个事务一旦提交，则会永久的改变数据库的数据.</li>
+</ul>
+<p><strong>事务的创建</strong></p>
+<ul>
+<li><p>隐式事务：事务没有明显的开启和结束的标记</p>
+<p>  比如insert、update、delete语句</p>
+<p>  delete from 表 where id =1;</p>
+</li>
+<li><p>显式事务：事务具有明显的开启和结束的标记</p>
+<p>  前提：必须先设置自动提交功能为禁用</p>
+<p>  set autocommit=0;</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#步骤1：开启事务</span></span><br><span class="line"><span class="keyword">set</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">start</span> <span class="keyword">transaction</span>;可选的</span><br><span class="line"><span class="comment">#步骤2：编写事务中的sql语句(select insert update delete)</span></span><br><span class="line">语句1;</span><br><span class="line">语句2;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#步骤3：结束事务</span></span><br><span class="line"><span class="keyword">commit</span>;提交事务</span><br><span class="line"><span class="keyword">rollback</span>;回滚事务</span><br><span class="line"></span><br><span class="line"><span class="keyword">savepoint</span> 节点名;设置保存点</span><br></pre></td></tr></table></figure>
+
+<p>事务的隔离级别：</p>
+<table>
+<thead>
+<tr>
+<th><code></code></th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read uncommitted</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>read committed</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>repeatable read</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>serializable</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody></table>
+<p>mysql中默认第三个隔离级别 repeatable read</p>
+<p>oracle中默认第二个隔离级别 read committed</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查看隔离级别</span><br><span class="line"><span class="keyword">select</span> @@tx_isolation;</span><br><span class="line">设置隔离级别</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">session</span>|<span class="keyword">global</span> <span class="keyword">transaction</span> <span class="keyword">isolation</span> <span class="keyword">level</span> 隔离级别;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">开启事务的语句;</span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 张三丰的余额=<span class="number">500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'张三丰'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">update</span> 表 <span class="keyword">set</span> 郭襄的余额=<span class="number">1500</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'郭襄'</span></span><br><span class="line">结束事务的语句;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-演示事务的使用步骤"><a href="#1-演示事务的使用步骤" class="headerlink" title="1.演示事务的使用步骤"></a>1.演示事务的使用步骤</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开启事务</span></span><br><span class="line"><span class="keyword">SET</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line"><span class="comment">#编写一组事务的语句</span></span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance = <span class="number">1000</span> <span class="keyword">WHERE</span> username=<span class="string">'张无忌'</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance = <span class="number">1000</span> <span class="keyword">WHERE</span> username=<span class="string">'赵敏'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#结束事务</span></span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br><span class="line"><span class="comment">#commit;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-演示事务对于delete和truncate的处理的区别"><a href="#2-演示事务对于delete和truncate的处理的区别" class="headerlink" title="2.演示事务对于delete和truncate的处理的区别"></a>2.演示事务对于delete和truncate的处理的区别</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">account</span>;</span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-演示savepoint-的使用"><a href="#3-演示savepoint-的使用" class="headerlink" title="3.演示savepoint 的使用"></a>3.演示savepoint 的使用</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">account</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">25</span>;</span><br><span class="line"><span class="keyword">SAVEPOINT</span> a;<span class="comment">#设置保存点</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">account</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">28</span>;</span><br><span class="line"><span class="keyword">ROLLBACK</span> <span class="keyword">TO</span> a;<span class="comment">#回滚到保存点</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h2 class="title">
     <a href="/2020/06/13/Database15/">
       【补充】标识列
     </a>
@@ -1266,109 +1433,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-      
-      
-      <div class="meta" id="header-meta">
-        
-          
-  <h2 class="title">
-    <a href="/2020/06/09/Database06/">
-      DQL语言————分组查询
-    </a>
-  </h2>
-
-
-        
-        <div class='new-meta-box'>
-          
-            
-          
-            
-              
-<div class='new-meta-item author'>
-  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
-    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
-    <p>Duvin</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/' rel="nofollow">
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>数据库</p>
-    </a>
-  </div>
-
-
-            
-          
-            
-              <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 9, 2020</p>
-  </a>
-</div>
-
-            
-          
-            
-              
-
-            
-          
-            
-              
-
-            
-          
-        </div>
-        
-          <hr>
-        
-      </div>
-    
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>语法</li>
-<li>特点</li>
-<li>案例</li>
-</ul>
-      
-    </div>
-    
-      
-        <div class="button readmore">
-          <a href="/2020/06/09/Database06/">
-            阅读全文 <i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1489,7 +1553,7 @@
           <li><a class="flat-box"
             title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
             id="categoriesE695B0E68DAEE5BA93"
-            ><div class='name'>数据库</div><div class='badge'>(15)</div></a></li>
+            ><div class='name'>数据库</div><div class='badge'>(16)</div></a></li>
         
       </ul>
     </div>
