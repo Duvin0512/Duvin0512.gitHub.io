@@ -554,7 +554,7 @@
           
   <h2 class="title">
     <a href="/2020/06/13/Database19/">
-      Database19
+      存储过程和函数
     </a>
   </h2>
 
@@ -577,6 +577,14 @@
           
             
               
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>数据库</p>
+    </a>
+  </div>
+
 
             
           
@@ -612,107 +620,19 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-<h1 id="存储过程和函数"><a href="#存储过程和函数" class="headerlink" title="存储过程和函数"></a>存储过程和函数</h1><p>存储过程和函数：类似于java中的方法</p>
-<p>好处：</p>
-<ol>
-<li>提高代码的重用性</li>
-<li>简化操作</li>
-</ol>
-<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><p>含义：</p>
-<p>一组预先编译好的SQL语句的集合，理解成批处理语句</p>
-<ol>
-<li>提高代码的重用性</li>
-<li>简化操作</li>
-<li>减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率</li>
-</ol>
-<h3 id="一、创建语法"><a href="#一、创建语法" class="headerlink" title="一、创建语法"></a>一、创建语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> 存储过程名(参数列表)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line">	存储过程体（一组合法的<span class="keyword">SQL</span>语句）</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong></p>
-<ol>
-<li><p>参数列表包含三部分</p>
-<p> 参数模式  参数名  参数类型</p>
-<p> 举例：</p>
-<p> in stuname varchar(20)</p>
-<p> 参数模式：</p>
-<p> in：该参数可以作为输入，也就是该参数需要调用方传入值</p>
-<p> out：该参数可以作为输出，也就是该参数可以作为返回值</p>
-<p> inout：该参数既可以作为输入又可以作为输出，也就是该参数既需要传入值，又可以返回值</p>
-</li>
-<li><p>如果存储过程体仅仅只有一句话，begin end可以省略</p>
-<p> 存储过程体中的每条sql语句的结尾要求必须加分号。</p>
-<p> 存储过程的结尾可以使用 delimiter 重新设置</p>
-<p> 语法：</p>
-<p> delimiter 结束标记</p>
-<p> 案例：</p>
-<p> delimiter $</p>
-</li>
-</ol>
-<h3 id="二、调用语法"><a href="#二、调用语法" class="headerlink" title="二、调用语法"></a>二、调用语法</h3><p><code>CALL 存储过程名(实参列表);</code></p>
-<h4 id="1-空参列表"><a href="#1-空参列表" class="headerlink" title="1.空参列表"></a>1.空参列表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例：插入到admin表中五条记录</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">admin</span>;</span><br><span class="line"></span><br><span class="line">DELIMITER $</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> myp1()</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">admin</span>(username,<span class="string">`password`</span>) </span><br><span class="line">	<span class="keyword">VALUES</span>(<span class="string">'john1'</span>,<span class="string">'0000'</span>),(<span class="string">'lily'</span>,<span class="string">'0000'</span>),(<span class="string">'rose'</span>,<span class="string">'0000'</span>),(<span class="string">'jack'</span>,<span class="string">'0000'</span>),(<span class="string">'tom'</span>,<span class="string">'0000'</span>);</span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#调用</span></span><br><span class="line"><span class="keyword">CALL</span> myp1()$</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-创建带in模式参数的存储过程"><a href="#2-创建带in模式参数的存储过程" class="headerlink" title="2.创建带in模式参数的存储过程"></a>2.创建带in模式参数的存储过程</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例1：创建存储过程实现 根据女神名，查询对应的男神信息</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> myp2(<span class="keyword">IN</span> beautyName <span class="built_in">VARCHAR</span>(<span class="number">20</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">SELECT</span> bo.*</span><br><span class="line">	<span class="keyword">FROM</span> boys bo</span><br><span class="line">	<span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> beauty b <span class="keyword">ON</span> bo.id = b.boyfriend_id</span><br><span class="line">	<span class="keyword">WHERE</span> b.name=beautyName;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"><span class="comment">#调用</span></span><br><span class="line"><span class="keyword">CALL</span> myp2(<span class="string">'柳岩'</span>)$</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例2 ：创建存储过程实现，用户是否登录成功</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> myp4(<span class="keyword">IN</span> username <span class="built_in">VARCHAR</span>(<span class="number">20</span>),<span class="keyword">IN</span> <span class="keyword">PASSWORD</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">DECLARE</span> <span class="keyword">result</span> <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;<span class="comment">#声明并初始化</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">INTO</span> <span class="keyword">result</span><span class="comment">#赋值</span></span><br><span class="line">	<span class="keyword">FROM</span> <span class="keyword">admin</span></span><br><span class="line">	<span class="keyword">WHERE</span> admin.username = username</span><br><span class="line">	<span class="keyword">AND</span> admin.password = <span class="keyword">PASSWORD</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">SELECT</span> <span class="keyword">IF</span>(<span class="keyword">result</span>&gt;<span class="number">0</span>,<span class="string">'成功'</span>,<span class="string">'失败'</span>);<span class="comment">#使用</span></span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"><span class="comment">#调用</span></span><br><span class="line"><span class="keyword">CALL</span> myp3(<span class="string">'张飞'</span>,<span class="string">'8888'</span>)$</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-创建out-模式参数的存储过程"><a href="#3-创建out-模式参数的存储过程" class="headerlink" title="3.创建out 模式参数的存储过程"></a>3.创建out 模式参数的存储过程</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例1：根据输入的女神名，返回对应的男神名</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> myp6(<span class="keyword">IN</span> beautyName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),<span class="keyword">OUT</span> boyName <span class="built_in">VARCHAR</span>(<span class="number">20</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">SELECT</span> bo.boyname <span class="keyword">INTO</span> boyname</span><br><span class="line">	<span class="keyword">FROM</span> boys bo</span><br><span class="line">	<span class="keyword">RIGHT</span> <span class="keyword">JOIN</span></span><br><span class="line">	beauty b <span class="keyword">ON</span> b.boyfriend_id = bo.id</span><br><span class="line">	<span class="keyword">WHERE</span> b.name=beautyName ;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">END</span> $</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例2：根据输入的女神名，返回对应的男神名和魅力值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> myp7(<span class="keyword">IN</span> beautyName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),<span class="keyword">OUT</span> boyName <span class="built_in">VARCHAR</span>(<span class="number">20</span>),<span class="keyword">OUT</span> usercp <span class="built_in">INT</span>) </span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">SELECT</span> boys.boyname ,boys.usercp <span class="keyword">INTO</span> boyname,usercp</span><br><span class="line">	<span class="keyword">FROM</span> boys </span><br><span class="line">	<span class="keyword">RIGHT</span> <span class="keyword">JOIN</span></span><br><span class="line">	beauty b <span class="keyword">ON</span> b.boyfriend_id = boys.id</span><br><span class="line">	<span class="keyword">WHERE</span> b.name=beautyName ;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#调用</span></span><br><span class="line"><span class="keyword">CALL</span> myp7(<span class="string">'小昭'</span>,@<span class="keyword">name</span>,@cp)$</span><br><span class="line"><span class="keyword">SELECT</span> @<span class="keyword">name</span>,@cp$</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-创建带inout模式参数的存储过程"><a href="#4-创建带inout模式参数的存储过程" class="headerlink" title="4.创建带inout模式参数的存储过程"></a>4.创建带inout模式参数的存储过程</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例1：传入a和b两个值，最终a和b都翻倍并返回</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> myp8(INOUT a <span class="built_in">INT</span> ,INOUT b <span class="built_in">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">SET</span> a=a*<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">SET</span> b=b*<span class="number">2</span>;</span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"><span class="comment">#调用</span></span><br><span class="line"><span class="keyword">SET</span> @m=<span class="number">10</span>$</span><br><span class="line"><span class="keyword">SET</span> @n=<span class="number">20</span>$</span><br><span class="line"><span class="keyword">CALL</span> myp8(@m,@n)$</span><br><span class="line"><span class="keyword">SELECT</span> @m,@n$</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、删除存储过程"><a href="#三、删除存储过程" class="headerlink" title="三、删除存储过程"></a>三、删除存储过程</h3><p>语法：</p>
-<p><code>drop procedure 存储过程名</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> p1;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> p2,p3;<span class="comment">#×</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="四、查看存储过程的信息"><a href="#四、查看存储过程的信息" class="headerlink" title="四、查看存储过程的信息"></a>四、查看存储过程的信息</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DESC myp2;×</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span>  myp2;</span><br></pre></td></tr></table></figure>
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>含义：</p>
-<p>一组预先编译好的SQL语句的集合，理解成批处理语句</p>
-<ol>
-<li>提高代码的重用性</li>
-<li>简化操作</li>
-<li>减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率</li>
-</ol>
-<p><strong>区别：</strong></p>
-<p><em>存储过程：</em></p>
-<p>可以有0个返回，也可以有多个返回，适合做批量插入、批量更新</p>
-<p><em>函数：</em></p>
-<p>有且仅有1个返回，适合做处理数据后返回一个结果</p>
-<h3 id="一、创建语法-1"><a href="#一、创建语法-1" class="headerlink" title="一、创建语法"></a>一、创建语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> 函数名(参数列表) <span class="keyword">RETURNS</span> 返回类型</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	函数体</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<ol>
-<li><p>参数列表 包含两部分：</p>
-<p> 参数名 参数类型</p>
-</li>
-<li><p>函数体：肯定会有return语句，如果没有会报错</p>
-<p> 如果return语句没有放在函数体的最后也不报错，但不建议</p>
-<p> return 值;</p>
-</li>
-<li><p>函数体中仅有一句话，则可以省略begin end</p>
-</li>
-<li><p>使用 delimiter语句设置结束标记</p>
-</li>
-</ol>
-<h3 id="二、调用语法-1"><a href="#二、调用语法-1" class="headerlink" title="二、调用语法"></a>二、调用语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 函数名(参数列表)</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-无参有返回"><a href="#1-无参有返回" class="headerlink" title="1.无参有返回"></a>1.无参有返回</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例：返回公司的员工个数</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> myf1() <span class="keyword">RETURNS</span> <span class="built_in">INT</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">DECLARE</span> c <span class="built_in">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;<span class="comment">#定义局部变量</span></span><br><span class="line">	<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">INTO</span> c<span class="comment">#赋值</span></span><br><span class="line">	<span class="keyword">FROM</span> employees;</span><br><span class="line">	RETURN c;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> myf1()$</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-有参有返回"><a href="#2-有参有返回" class="headerlink" title="2.有参有返回"></a>2.有参有返回</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例1：根据员工名，返回它的工资</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> myf2(empName <span class="built_in">VARCHAR</span>(<span class="number">20</span>)) <span class="keyword">RETURNS</span> <span class="keyword">DOUBLE</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">SET</span> @sal=<span class="number">0</span>;<span class="comment">#定义用户变量 </span></span><br><span class="line">	<span class="keyword">SELECT</span> salary <span class="keyword">INTO</span> @sal   <span class="comment">#赋值</span></span><br><span class="line">	<span class="keyword">FROM</span> employees</span><br><span class="line">	<span class="keyword">WHERE</span> last_name = empName;</span><br><span class="line">	</span><br><span class="line">	RETURN @sal;</span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> myf2(<span class="string">'k_ing'</span>) $</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例2：根据部门名，返回该部门的平均工资</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> myf3(deptName <span class="built_in">VARCHAR</span>(<span class="number">20</span>)) <span class="keyword">RETURNS</span> <span class="keyword">DOUBLE</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">DECLARE</span> sal <span class="keyword">DOUBLE</span> ;</span><br><span class="line">	<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(salary) <span class="keyword">INTO</span> sal</span><br><span class="line">	<span class="keyword">FROM</span> employees e</span><br><span class="line">	<span class="keyword">JOIN</span> departments d <span class="keyword">ON</span> e.department_id = d.department_id</span><br><span class="line">	<span class="keyword">WHERE</span> d.department_name=deptName;</span><br><span class="line">	RETURN sal;</span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> myf3(<span class="string">'IT'</span>)$</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、查看函数"><a href="#三、查看函数" class="headerlink" title="三、查看函数"></a>三、查看函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> myf3;</span><br></pre></td></tr></table></figure>
-
-<h3 id="四、删除函数"><a href="#四、删除函数" class="headerlink" title="四、删除函数"></a>四、删除函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">FUNCTION</span> myf3;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例</span></span><br><span class="line"><span class="comment">#一、创建函数，实现传入两个float，返回二者之和</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> test_fun1(num1 <span class="built_in">FLOAT</span>,num2 <span class="built_in">FLOAT</span>) <span class="keyword">RETURNS</span> <span class="built_in">FLOAT</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">DECLARE</span> <span class="keyword">SUM</span> <span class="built_in">FLOAT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">SET</span> <span class="keyword">SUM</span>=num1+num2;</span><br><span class="line">	RETURN SUM;</span><br><span class="line"><span class="keyword">END</span> $</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> test_fun1(<span class="number">1</span>,<span class="number">2</span>)$</span><br></pre></td></tr></table></figure>
-
+        <ul>
+<li>存储过程</li>
+<li>函数</li>
+</ul>
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2020/06/13/Database19/">
+            阅读全文 <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
@@ -1665,7 +1585,7 @@
           <li><a class="flat-box"
             title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
             id="categoriesE695B0E68DAEE5BA93"
-            ><div class='name'>数据库</div><div class='badge'>(18)</div></a></li>
+            ><div class='name'>数据库</div><div class='badge'>(19)</div></a></li>
         
       </ul>
     </div>
