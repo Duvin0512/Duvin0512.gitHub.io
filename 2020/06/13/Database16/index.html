@@ -416,7 +416,23 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#步骤1：开启事务</span></span><br><span class="line"><span class="keyword">set</span> autocommit=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">start</span> <span class="keyword">transaction</span>;可选的</span><br><span class="line"><span class="comment">#步骤2：编写事务中的sql语句(select insert update delete)</span></span><br><span class="line">语句1;</span><br><span class="line">语句2;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">#步骤3：结束事务</span></span><br><span class="line"><span class="keyword">commit</span>;提交事务</span><br><span class="line"><span class="keyword">rollback</span>;回滚事务</span><br><span class="line"></span><br><span class="line"><span class="keyword">savepoint</span> 节点名;设置保存点</span><br></pre></td></tr></table></figure>
 
-<p>事务的隔离级别：</p>
+<p><strong>并发事务</strong></p>
+<ol>
+<li><p>事务的并发问题是如何发生的？</p>
+<p> 多个事务 同时 操作 同一个数据库的相同数据时</p>
+</li>
+<li><p>并发问题都有哪些？</p>
+<p> 脏读：一个事务读取了其他事务还没有提交的数据，读到的是其他事务“更新”的数据</p>
+<p> 不可重复读：一个事务多次读取，结果不一样</p>
+<p> 幻读：一个事务读取了其他事务还没有提交的数据，只是读到的是 其他事务“插入”的数据</p>
+</li>
+<li><p>如何解决并发问题</p>
+<p> 通过设置隔离级别来解决并发问题</p>
+</li>
+<li><p>隔离级别</p>
+<p> 事务的隔离级别：</p>
+</li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -554,7 +570,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-13T01:23:58+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-13T23:39:26+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jun 13, 2020</p>
