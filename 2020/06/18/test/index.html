@@ -385,10 +385,13 @@
 <p>之前在写博客时不是很明确本地图片的上传方式。一直是将图片储存在<strong>有道云笔记</strong>中生成图片链接插入博客中。但之后发现每次刚部署发布的时候是成功的，可以显示图片。但是下一次打开的时候图片还是显示崩溃，之后发现可能是有道云笔记里的图片地址是变化的。</p>
 <p>之后在网上找到一种方法：</p>
 <ol>
-<li>在博客文件夹下找到source文件夹，在source文件夹下新建一个images文件夹，将图片统一放在source/images文件夹中，之后通过markdown语法访问它们。</li>
+<li><p>在博客文件夹下找到source文件夹，在source文件夹下新建一个images文件夹，将图片统一放在source/images文件夹中，之后通过markdown语法访问它们。</p>
+<p> <img src="/images/test_1.png" alt="配置文件夹"></p>
+</li>
+<li><p>之后通过<code>hexo g,hexo d</code>命令部署上传,图片就可以上传正常显示了。</p>
+<p> <img src="/images/test_2.png" alt="图片上传成功"></p>
+</li>
 </ol>
-<p><img src="/images/test.jpg" alt="test"></p>
-<p><img src="/images/test.png" alt="1111"></p>
 
           
             <div class='article_footer'>
@@ -481,7 +484,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-18T14:52:36+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-18T15:05:39+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jun 18, 2020</p>
