@@ -410,7 +410,7 @@ udp聊天器 ⭐
 <p>为了把全世界的所有不同类型的计算机都连接起来，就必须规定⼀套全球通⽤的协议，为了实现互联⽹这个⽬标，互联⽹协议簇（Internet Protocol Suite）就是通⽤协议标准。</p>
 <p>因为互联⽹协议包含了上百种协议标准，但是最重要的两个协议是TCP和IP协议，所以，⼤家把互联⽹的协议简称TCP/IP协议。</p>
 <p>常⽤的⽹络协议如下图所示：</p>
-<p><img src="images/socket_2.png" alt="常⽤的⽹络协议"></p>
+<p><img src="/images/socket_2.png" alt="常⽤的⽹络协议"></p>
 <p>说明：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">⽹际层也称为：⽹络层</span><br><span class="line">⽹络接⼝层也称为：链路层</span><br></pre></td></tr></table></figure>
 
@@ -519,14 +519,14 @@ udp聊天器 ⭐
 <li>发送数据</li>
 <li>关闭套接字</li>
 </ol>
-<p><img src="/source/images/socket_4.png" alt=""></p>
+<p><img src="/images/socket_4.png" alt=""></p>
 <p>代码如下：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#1. 创建套接字</span></span><br><span class="line">udpSocket = socket(AF_INET, SOCK_DGRAM)</span><br><span class="line"></span><br><span class="line"><span class="comment">#2. 准备接收⽅的地址</span></span><br><span class="line">sendAddr = (<span class="string">'192.168.0.102'</span>, <span class="number">8080</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#3. 从键盘获取数据</span></span><br><span class="line">sendData = input(<span class="string">"请输⼊要发送的数据:"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4. 发送数据到指定的电脑上</span></span><br><span class="line">udpSocket.sendto(sendData, sendAddr)</span><br><span class="line"></span><br><span class="line"><span class="comment">#5. 关闭套接字</span></span><br><span class="line">udpSocket.close()</span><br></pre></td></tr></table></figure>
 
 <p>运⾏现象：<br>在Ubuntu中运⾏脚本：</p>
-<p><img src="/source/images/socket_5.png" alt=""></p>
+<p><img src="/images/socket_5.png" alt=""></p>
 <p>在windows中运⾏“⽹络调试助⼿”：</p>
-<p><img src="/source/images/socket_6.png" alt=""></p>
+<p><img src="/images/socket_6.png" alt=""></p>
 <h3 id="带有推出功能的循环发送数据"><a href="#带有推出功能的循环发送数据" class="headerlink" title="带有推出功能的循环发送数据"></a>带有推出功能的循环发送数据</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.创建一个udp套接字</span></span><br><span class="line">udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.从键盘获取数据</span></span><br><span class="line">    send_data = input(<span class="string">"请输入要发送的数据: "</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#如果输入的数据是exit,那么就退出程序</span></span><br><span class="line">    <span class="keyword">if</span> send_data ==<span class="string">"exit"</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#可以使用套接字收发数据</span></span><br><span class="line">    <span class="comment"># udp_socket.sendto("hahahah",对方的ip以及port)</span></span><br><span class="line">    <span class="comment"># udp_socket.sendto( b"hahahah------1----", ("192. 168.0.102", 8080))</span></span><br><span class="line">    udp_socket.sendto(send_data.encode(<span class="string">"utf-8"</span>), (<span class="string">"192.168.0.102"</span>, <span class="number">8080</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.关闭套接字</span></span><br><span class="line">udp_socket.close()</span><br></pre></td></tr></table></figure>
 
 <h2 id="udp⽹络程序-接收数据"><a href="#udp⽹络程序-接收数据" class="headerlink" title="udp⽹络程序-接收数据"></a>udp⽹络程序-接收数据</h2><p>创建⼀个udp客户端程序的流程是简单，具体步骤如下：</p>
@@ -536,18 +536,18 @@ udp聊天器 ⭐
 <li>接收数据</li>
 <li>关闭套接字</li>
 </ol>
-<p><img src="/source/images/socket_4.png" alt=""></p>
+<p><img src="/images/socket_4.png" alt=""></p>
 <p>代码如下：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#1. 创建套接字</span></span><br><span class="line">udp_socket = socket(AF_INET, SOCK_DGRAM)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.绑定本地的相关信息</span></span><br><span class="line">local_addr = (<span class="string">""</span>, <span class="number">7788</span>)</span><br><span class="line">udp_socket.bind(local_addr)</span><br><span class="line"></span><br><span class="line"><span class="comment">#3. 接收数据</span></span><br><span class="line">recv_data = udp_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line"><span class="comment"># recv_data这个变量中存储的是一个元组(接收到的数据，(发送方的ip, port))</span></span><br><span class="line">recv_msg = recv_data[<span class="number">0</span>] <span class="comment"># 存储接收的数据</span></span><br><span class="line">send_addr = recv_data[i] <span class="comment"># 存储发送方的地址信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印接收到的数据</span></span><br><span class="line"><span class="comment"># print(recv_ data )</span></span><br><span class="line"><span class="comment"># print("%s:%s" % (str(send_addr), recv_msg.decode("utf-8")))</span></span><br><span class="line">print(<span class="string">"%s:%s"</span> % (str(send_addr), recv_msg.decode(<span class="string">"gbk"</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.关闭套接字</span></span><br><span class="line">udp_socket.close()</span><br></pre></td></tr></table></figure>
 
 <p>运⾏现象：<br>在Ubuntu中运⾏脚本：</p>
-<p><img src="/source/images/socket_5.png" alt=""></p>
+<p><img src="/socket_5.png" alt=""></p>
 <p>在windows中运⾏“⽹络调试助⼿”：</p>
-<p><img src="/source/images/socket_6.png" alt=""></p>
+<p><img src="/images/socket_6.png" alt=""></p>
 <h3 id="循环接收并显示数据"><a href="#循环接收并显示数据" class="headerlink" title="循环接收并显示数据"></a>循环接收并显示数据</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#1. 创建套接字</span></span><br><span class="line">udp_socket = socket(AF_INET, SOCK_DGRAM)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.绑定本地的相关信息</span></span><br><span class="line">local_addr = (<span class="string">""</span>, <span class="number">7788</span>)</span><br><span class="line">udp_socket.bind(local_addr)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment">#3. 接收数据</span></span><br><span class="line">    recv_data = udp_socket.recvfrom(<span class="number">1024</span>)</span><br><span class="line">    <span class="comment"># recv_data这个变量中存储的是一个元组(接收到的数据，(发送方的ip, port))</span></span><br><span class="line">    recv_msg = recv_data[<span class="number">0</span>] <span class="comment"># 存储接收的数据</span></span><br><span class="line">    send_addr = recv_data[i] <span class="comment"># 存储发送方的地址信息</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 4.打印接收到的数据</span></span><br><span class="line">    <span class="comment"># print(recv_ data )</span></span><br><span class="line">    <span class="comment"># print("%s:%s" % (str(send_addr), recv_msg.decode("utf-8")))</span></span><br><span class="line">    print(<span class="string">"%s:%s"</span> % (str(send_addr), recv_msg.decode(<span class="string">"gbk"</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#5. 关闭套接字</span></span><br><span class="line">udp_socket.close()</span><br></pre></td></tr></table></figure>
 
 <h1 id="udp⽹络程序-端⼝问题"><a href="#udp⽹络程序-端⼝问题" class="headerlink" title="udp⽹络程序-端⼝问题"></a>udp⽹络程序-端⼝问题</h1><h2 id="会变的端⼝号"><a href="#会变的端⼝号" class="headerlink" title="会变的端⼝号"></a>会变的端⼝号</h2><p>重新运⾏多次脚本，然后在“⽹络调试助⼿”中，看到的现象如下：</p>
-<p><img src="/source/images/socket_7.png" alt=""></p>
+<p><img src="/images/socket_7.png" alt=""></p>
 <p>说明：</p>
 <ul>
 <li>每重新运⾏⼀次⽹络程序，上图中红圈中的数字，不⼀样的原因在于，这个数字标识这个⽹络程序，当重新运⾏时，如果没有确定到底⽤哪个，系统默认会随机分配</li>
@@ -559,7 +559,7 @@ udp聊天器 ⭐
 <li>⼀个udp⽹络程序，可以不绑定，此时操作系统会随机进⾏分配⼀个端⼝，如果重新运⾏次程序端⼝可能会发⽣变化</li>
 <li>⼀个udp⽹络程序，也可以绑定信息（ip地址，端⼝号），如果绑定成功，那么操作系统⽤这个端⼝号来进⾏区别收到的⽹络数据是否是此进程的</li>
 </ul>
-<h1 id="udp⽹络通信过程"><a href="#udp⽹络通信过程" class="headerlink" title="udp⽹络通信过程"></a>udp⽹络通信过程</h1><p><img src="/source/images/socket_10.png" alt=""></p>
+<h1 id="udp⽹络通信过程"><a href="#udp⽹络通信过程" class="headerlink" title="udp⽹络通信过程"></a>udp⽹络通信过程</h1><p><img src="/images/socket_10.png" alt=""></p>
 <h1 id="udp总结"><a href="#udp总结" class="headerlink" title="udp总结"></a>udp总结</h1><h2 id="1-udp是TCP-IP协议族中的⼀种协议能够完成不同机器上的程序间的数据通信"><a href="#1-udp是TCP-IP协议族中的⼀种协议能够完成不同机器上的程序间的数据通信" class="headerlink" title="1. udp是TCP/IP协议族中的⼀种协议能够完成不同机器上的程序间的数据通信"></a>1. udp是TCP/IP协议族中的⼀种协议能够完成不同机器上的程序间的数据通信</h2><h2 id="2-udp服务器、客户端"><a href="#2-udp服务器、客户端" class="headerlink" title="2. udp服务器、客户端"></a>2. udp服务器、客户端</h2><ul>
 <li>udp的服务器和客户端的区分：往往是通过<code>请求服务</code>和<code>提供服务</code>来进⾏区分</li>
 <li>请求服务的⼀⽅称为：客户端</li>
@@ -662,7 +662,7 @@ udp聊天器 ⭐
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-24T18:06:41+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-24T18:11:35+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jun 24, 2020</p>
