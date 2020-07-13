@@ -4,6 +4,59 @@
   
     
     <entry>
+      <title>python01</title>
+      <link href="/2020/07/12/python01/"/>
+      <url>/2020/07/12/python01/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>多任务——协程</title>
+      <link href="/2020/07/03/python-socket05/"/>
+      <url>/2020/07/03/python-socket05/</url>
+      
+        <content type="html"><![CDATA[<ul><li>迭代器</li><li>生成器</li><li>协程-yield</li><li>协程-greenlet</li><li>协程-gevent</li><li>进程、线程、协程区别</li><li>案例:并发下载器</li></ul><a id="more"></a>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 网络编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>djago01</title>
+      <link href="/2020/06/30/djago01/"/>
+      <url>/2020/06/30/djago01/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多线程——进程</title>
       <link href="/2020/06/30/python-socket04/"/>
       <url>/2020/06/30/python-socket04/</url>
