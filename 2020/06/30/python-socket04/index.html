@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>多线程——进程 - Duvin&#39;s Blog</title>
+  
+    <meta name="keywords" content="python,网络编程">
+  
+  
+    <meta name="description" content="
+进程以及状态
+进程的创建-multiprocessing
+进程、线程对比
+进程间通信-Queue
+进程的创建进程池Pool
+案例:文件夹copy器(多进程版)
+">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/images/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            Duvin
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/06/30/python-socket04/">
+      多线程——进程
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
+    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
+    <p>Duvin</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/python/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>python</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 30, 2020</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <ul>
+<li>进程以及状态</li>
+<li>进程的创建-multiprocessing</li>
+<li>进程、线程对比</li>
+<li>进程间通信-Queue</li>
+<li>进程的创建进程池Pool</li>
+<li>案例:文件夹copy器(多进程版)</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="进程以及状态"><a href="#进程以及状态" class="headerlink" title="进程以及状态"></a>进程以及状态</h1><ol>
+<li><p>进程<br> 程序：例如xxx.py这是程序，是一个静态的</p>
+<p> 进程：一个程序运行起来后，代码+用到的资源 称之为进程，它是操作系统分配资源的基本单元。</p>
+<p> 不仅可以通过线程完成多任务，进程也是可以的</p>
+</li>
+<li><p>进程的状态<br> 工作中，任务数往往大于cpu的核数，即一定有一些任务正在执行，而另外一些任务在等待cpu进行执行，因此导致了有了不同的状态</p>
+<p> <img src="/images/socket4_1.png" alt=""></p>
+<ul>
+<li>就绪态：运行的条件都已经慢去，正在等在cpu执行</li>
+<li>执行态：cpu正在执行其功能</li>
+<li>等待态：等待某些条件满足，例如一个程序sleep了，此时就处于等待态</li>
+</ul>
+</li>
+</ol>
+<h1 id="进程的创建-multiprocessing"><a href="#进程的创建-multiprocessing" class="headerlink" title="进程的创建-multiprocessing"></a>进程的创建-multiprocessing</h1><p>multiprocessing模块就是跨平台版本的多进程模块，提供了一个Process类来代表一个进程对象，这个对象可以理解为是一个独立的进程，可以执行另外的事情</p>
+<ol>
+<li><p>2个while循环一起执行</p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_proc</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""子进程要执行的代码"""</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        print(<span class="string">"----2----"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    p = Process(target=run_proc)</span><br><span class="line">    p.start()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        print(<span class="string">"----1----"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 说明</p>
+<p> 创建子进程时，只需要传入一个执行函数和函数的参数，创建一个Process实例，用start()方法启动</p>
+</li>
+<li><p>进程pid</p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_proc</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""子进程要执行的代码"""</span></span><br><span class="line">    print(<span class="string">'子进程运行中，pid=%d...'</span> % os.getpid())  <span class="comment"># os.getpid获取当前进程的进程号</span></span><br><span class="line">    print(<span class="string">'子进程将要结束...'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    print(<span class="string">'父进程pid: %d'</span> % os.getpid())  <span class="comment"># os.getpid获取当前进程的进程号</span></span><br><span class="line">    p = Process(target=run_proc)</span><br><span class="line">    p.start()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Process语法结构如下：</p>
+<p> Process([group [, target [, name [, args [, kwargs]]]]])</p>
+<p> target：如果传递了函数的引用，可以任务这个子进程就执行这里的代码<br> args：给target指定的函数传递的参数，以元组的方式传递<br> kwargs：给target指定的函数传递命名参数<br> name：给进程设定一个名字，可以不设定<br> group：指定进程组，大多数情况下用不到<br> Process创建的实例对象的常用方法：</p>
+<p> start()：启动子进程实例（创建子进程）<br> is_alive()：判断进程子进程是否还在活着<br> join([timeout])：是否等待子进程执行结束，或等待多少秒<br> terminate()：不管任务是否完成，立即终止子进程<br> Process创建的实例对象的常用属性：</p>
+<p> name：当前进程的别名，默认为Process-N，N为从1开始递增的整数<br> pid：当前进程的pid（进程号）</p>
+</li>
+<li><p>给子进程指定的函数传递参数</p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_proc</span><span class="params">(name, age, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        print(<span class="string">'子进程运行中，name= %s,age=%d ,pid=%d...'</span> % (name, age, os.getpid()))</span><br><span class="line">        print(kwargs)</span><br><span class="line">        sleep(<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    p = Process(target=run_proc, args=(<span class="string">'test'</span>,<span class="number">18</span>), kwargs=&#123;<span class="string">"m"</span>:<span class="number">20</span>&#125;)</span><br><span class="line">    p.start()</span><br><span class="line">    sleep(<span class="number">1</span>)  <span class="comment"># 1秒中之后，立即结束子进程</span></span><br><span class="line">    p.terminate()</span><br><span class="line">    p.join()</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">子进程运行中，name&#x3D; test,age&#x3D;18 ,pid&#x3D;45097...</span><br><span class="line">&#123;&#39;m&#39;: 20&#125;</span><br><span class="line">子进程运行中，name&#x3D; test,age&#x3D;18 ,pid&#x3D;45097...</span><br><span class="line">&#123;&#39;m&#39;: 20&#125;</span><br><span class="line">子进程运行中，name&#x3D; test,age&#x3D;18 ,pid&#x3D;45097...</span><br><span class="line">&#123;&#39;m&#39;: 20&#125;</span><br><span class="line">子进程运行中，name&#x3D; test,age&#x3D;18 ,pid&#x3D;45097...</span><br><span class="line">&#123;&#39;m&#39;: 20&#125;</span><br><span class="line">子进程运行中，name&#x3D; test,age&#x3D;18 ,pid&#x3D;45097...</span><br><span class="line">&#123;&#39;m&#39;: 20&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进程间不同享全局变量</p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">nums = [<span class="number">11</span>, <span class="number">22</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">work1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""子进程要执行的代码"""</span></span><br><span class="line">    print(<span class="string">"in process1 pid=%d ,nums=%s"</span> % (os.getpid(), nums))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        nums.append(i)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        print(<span class="string">"in process1 pid=%d ,nums=%s"</span> % (os.getpid(), nums))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">work2</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""子进程要执行的代码"""</span></span><br><span class="line">    print(<span class="string">"in process2 pid=%d ,nums=%s"</span> % (os.getpid(), nums))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    p1 = Process(target=work1)</span><br><span class="line">    p1.start()</span><br><span class="line">    p1.join()</span><br><span class="line"></span><br><span class="line">    p2 = Process(target=work2)</span><br><span class="line">    p2.start()</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">in process1 pid&#x3D;11349 ,nums&#x3D;[11, 22]</span><br><span class="line">in process1 pid&#x3D;11349 ,nums&#x3D;[11, 22, 0]</span><br><span class="line">in process1 pid&#x3D;11349 ,nums&#x3D;[11, 22, 0, 1]</span><br><span class="line">in process1 pid&#x3D;11349 ,nums&#x3D;[11, 22, 0, 1, 2]</span><br><span class="line">in process2 pid&#x3D;11350 ,nums&#x3D;[11, 22]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="进程、线程对比"><a href="#进程、线程对比" class="headerlink" title="进程、线程对比"></a>进程、线程对比</h1><h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>进程，能够完成多任务，比如 在一台电脑上能够同时运行多个QQ<br>线程，能够完成多任务，比如 一个QQ中的多个聊天窗口</p>
+<h2 id="定义的不同"><a href="#定义的不同" class="headerlink" title="定义的不同"></a>定义的不同</h2><p><strong>进程是系统进行资源分配和调度的一个独立单位.</strong></p>
+<p>线程是进程的一个实体,<strong>是CPU调度和分派的基本单位</strong>,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源.</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>一个程序至少有一个进程,一个进程至少有一个线程.<br>线程的划分尺度小于进程(资源比进程少)，使得多线程程序的并发性高。<br>进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率<br>线线程不能够独立执行，必须依存在进程中<br>可以将进程理解为工厂中的一条流水线，而其中的线程就是这个流水线上的工人</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>线程和进程在使用上各有优缺点：线程执行开销小，但不利于资源的管理和保护；而进程正相反。</p>
+<h1 id="进程间通信-Queue"><a href="#进程间通信-Queue" class="headerlink" title="进程间通信-Queue"></a>进程间通信-Queue</h1><p>Process之间有时需要通信，操作系统提供了很多机制来实现进程间的通信。</p>
+<ol>
+<li><p>Queue的使用</p>
+<p> 可以使用multiprocessing模块的Queue实现多进程之间的数据传递，Queue本身是一个消息列队程序，首先用一个小实例来演示一下Queue的工作原理：</p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Queue</span><br><span class="line">q=Queue(<span class="number">3</span>) <span class="comment">#初始化一个Queue对象，最多可接收三条put消息</span></span><br><span class="line">q.put(<span class="string">"消息1"</span>)</span><br><span class="line">q.put(<span class="string">"消息2"</span>)</span><br><span class="line">print(q.full())  <span class="comment">#Fale</span></span><br><span class="line">q.put(<span class="string">"消息3"</span>)</span><br><span class="line">print(q.full()) <span class="comment">#True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#因为消息列队已满下面的try都会抛出异常，第一个try会等待2秒后再抛出异常，第二个Try会立刻抛出异常</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    q.put(<span class="string">"消息4"</span>,<span class="literal">True</span>,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"消息列队已满，现有消息数量:%s"</span>%q.qsize())</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    q.put_nowait(<span class="string">"消息4"</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"消息列队已满，现有消息数量:%s"</span>%q.qsize())</span><br><span class="line"></span><br><span class="line"><span class="comment">#推荐的方式，先判断消息列队是否已满，再写入</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> q.full():</span><br><span class="line">    q.put_nowait(<span class="string">"消息4"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#读取消息时，先判断消息列队是否为空，再读取</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> q.empty():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(q.qsize()):</span><br><span class="line">        print(q.get_nowait())</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">False</span><br><span class="line">True</span><br><span class="line">消息列队已满，现有消息数量:3</span><br><span class="line">消息列队已满，现有消息数量:3</span><br><span class="line">消息1</span><br><span class="line">消息2</span><br><span class="line">消息3</span><br></pre></td></tr></table></figure>
+
+<p> <strong>说明</strong></p>
+<p> 初始化Queue()对象时（例如：q=Queue()），若括号中没有指定最大可接收的消息数量，或数量为负值，那么就代表可接受的消息数量没有上限（直到内存的尽头）；</p>
+<ul>
+<li><p>Queue.qsize()：返回当前队列包含的消息数量；</p>
+</li>
+<li><p>Queue.empty()：如果队列为空，返回True，反之False ；</p>
+</li>
+<li><p>Queue.full()：如果队列满了，返回True,反之False；</p>
+</li>
+<li><p>Queue.get([block[, timeout]])：获取队列中的一条消息，然后将其从列队中移除，block默认值为True；</p>
+<p>1）如果block使用默认值，且没有设置timeout（单位秒），消息列队如果为空，此时程序将被阻塞（停在读取状态），直到从消息列队读到消息为止，如果设置了timeout，则会等待timeout秒，若还没读取到任何消息，则抛出”Queue.Empty”异常；</p>
+<p>2）如果block值为False，消息列队如果为空，则会立刻抛出”Queue.Empty”异常；</p>
+</li>
+<li><p>Queue.get_nowait()：相当Queue.get(False)；</p>
+</li>
+<li><p>Queue.put(item,[block[, timeout]])：将item消息写入队列，block默认值为True；</p>
+<p>1）如果block使用默认值，且没有设置timeout（单位秒），消息列队如果已经没有空间可写入，此时程序将被阻塞（停在写入状态），直到从消息列队腾出空间为止，如果设置了timeout，则会等待timeout秒，若还没空间，则抛出”Queue.Full”异常；</p>
+<p>2）如果block值为False，消息列队如果没有空间可写入，则会立刻抛出”Queue.Full”异常；</p>
+</li>
+<li><p>Queue.put_nowait(item)：相当Queue.put(item, False)；</p>
+</li>
+</ul>
+</li>
+<li><p>Queue实例</p>
+<p> 我们以Queue为例，在父进程中创建两个子进程，一个往Queue里写数据，一个从Queue里读数据：</p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Queue</span><br><span class="line"><span class="keyword">import</span> os, time, random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写数据进程执行的代码:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(q)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>]:</span><br><span class="line">        print(<span class="string">'Put %s to queue...'</span> % value)</span><br><span class="line">        q.put(value)</span><br><span class="line">        time.sleep(random.random())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读数据进程执行的代码:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(q)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> q.empty():</span><br><span class="line">            value = q.get(<span class="literal">True</span>)</span><br><span class="line">            print(<span class="string">'Get %s from queue.'</span> % value)</span><br><span class="line">            time.sleep(random.random())</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 父进程创建Queue，并传给各个子进程：</span></span><br><span class="line">    q = Queue()</span><br><span class="line">    pw = Process(target=write, args=(q,))</span><br><span class="line">    pr = Process(target=read, args=(q,))</span><br><span class="line">    <span class="comment"># 启动子进程pw，写入:</span></span><br><span class="line">    pw.start()</span><br><span class="line">    <span class="comment"># 等待pw结束:</span></span><br><span class="line">    pw.join()</span><br><span class="line">    <span class="comment"># 启动子进程pr，读取:</span></span><br><span class="line">    pr.start()</span><br><span class="line">    pr.join()</span><br><span class="line">    <span class="comment"># pr进程里是死循环，无法等待其结束，只能强行终止:</span></span><br><span class="line">    print(<span class="string">''</span>)</span><br><span class="line">    print(<span class="string">'所有数据都写入并且读完'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>运行结果：</p>
+<h1 id="进程的创建进程池Pool"><a href="#进程的创建进程池Pool" class="headerlink" title="进程的创建进程池Pool"></a>进程的创建进程池Pool</h1><h2 id="进程池Pool"><a href="#进程池Pool" class="headerlink" title="进程池Pool"></a>进程池Pool</h2><p>当需要创建的子进程数量不多时，可以直接利用multiprocessing中的Process动态成生多个进程，但如果是上百甚至上千个目标，手动的去创建进程的工作量巨大，此时就可以用到multiprocessing模块提供的Pool方法。</p>
+<p>初始化Pool时，可以指定一个最大进程数，当有新的请求提交到Pool中时，如果池还没有满，那么就会创建一个新的进程用来执行该请求；但如果池中的进程数已经达到指定的最大值，那么该请求就会等待，直到池中有进程结束，才会用之前的进程来执行新的任务，请看下面的实例：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> os, time, random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(msg)</span>:</span></span><br><span class="line">    t_start = time.time()</span><br><span class="line">    print(<span class="string">"%s开始执行,进程号为%d"</span> % (msg,os.getpid()))</span><br><span class="line">    <span class="comment"># random.random()随机生成0~1之间的浮点数</span></span><br><span class="line">    time.sleep(random.random()*<span class="number">2</span>)</span><br><span class="line">    t_stop = time.time()</span><br><span class="line">    print(msg,<span class="string">"执行完毕，耗时%0.2f"</span> % (t_stop-t_start))</span><br><span class="line"></span><br><span class="line">po = Pool(<span class="number">3</span>)  <span class="comment"># 定义一个进程池，最大进程数3</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">10</span>):</span><br><span class="line">    <span class="comment"># Pool().apply_async(要调用的目标,(传递给目标的参数元祖,))</span></span><br><span class="line">    <span class="comment"># 每次循环将会用空闲出来的子进程去调用目标</span></span><br><span class="line">    po.apply_async(worker,(i,))</span><br><span class="line"></span><br><span class="line">print(<span class="string">"----start----"</span>)</span><br><span class="line">po.close()  <span class="comment"># 关闭进程池，关闭后po不再接收新的请求</span></span><br><span class="line">po.join()  <span class="comment"># 等待po中所有子进程执行完成，必须放在close语句之后</span></span><br><span class="line">print(<span class="string">"-----end-----"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">----start----</span><br><span class="line">0开始执行,进程号为21466</span><br><span class="line">1开始执行,进程号为21468</span><br><span class="line">2开始执行,进程号为21467</span><br><span class="line">0 执行完毕，耗时1.01</span><br><span class="line">3开始执行,进程号为21466</span><br><span class="line">2 执行完毕，耗时1.24</span><br><span class="line">4开始执行,进程号为21467</span><br><span class="line">3 执行完毕，耗时0.56</span><br><span class="line">5开始执行,进程号为21466</span><br><span class="line">1 执行完毕，耗时1.68</span><br><span class="line">6开始执行,进程号为21468</span><br><span class="line">4 执行完毕，耗时0.67</span><br><span class="line">7开始执行,进程号为21467</span><br><span class="line">5 执行完毕，耗时0.83</span><br><span class="line">8开始执行,进程号为21466</span><br><span class="line">6 执行完毕，耗时0.75</span><br><span class="line">9开始执行,进程号为21468</span><br><span class="line">7 执行完毕，耗时1.03</span><br><span class="line">8 执行完毕，耗时1.05</span><br><span class="line">9 执行完毕，耗时1.69</span><br><span class="line">-----end-----</span><br></pre></td></tr></table></figure>
+
+<p>multiprocessing.Pool常用函数解析：</p>
+<ul>
+<li>apply_async(func[, args[, kwds]]) ：使用非阻塞方式调用func（并行执行，堵塞方式必须等待上一个进程退出才能执行下一个进程），args为传递给func的参数列表，kwds为传递给func的关键字参数列表；</li>
+<li>close()：关闭Pool，使其不再接受新的任务；</li>
+<li>terminate()：不管任务是否完成，立即终止；</li>
+<li>join()：主进程阻塞，等待子进程的退出， 必须在close或terminate之后使用；</li>
+</ul>
+<h2 id="进程池中的Queue"><a href="#进程池中的Queue" class="headerlink" title="进程池中的Queue"></a>进程池中的Queue</h2><p>如果要使用Pool创建进程，就需要使用multiprocessing.Manager()中的Queue()，而不是multiprocessing.Queue()，否则会得到一条如下的错误信息：</p>
+<p>RuntimeError: Queue objects should only be shared between processes through inheritance.</p>
+<p>下面的实例演示了进程池中的进程如何通信：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改import中的Queue为Manager</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Manager,Pool</span><br><span class="line"><span class="keyword">import</span> os,time,random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reader</span><span class="params">(q)</span>:</span></span><br><span class="line">    print(<span class="string">"reader启动(%s),父进程为(%s)"</span> % (os.getpid(), os.getppid()))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(q.qsize()):</span><br><span class="line">        print(<span class="string">"reader从Queue获取到消息：%s"</span> % q.get(<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">writer</span><span class="params">(q)</span>:</span></span><br><span class="line">    print(<span class="string">"writer启动(%s),父进程为(%s)"</span> % (os.getpid(), os.getppid()))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"itcast"</span>:</span><br><span class="line">        q.put(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">    print(<span class="string">"(%s) start"</span> % os.getpid())</span><br><span class="line">    q = Manager().Queue()  <span class="comment"># 使用Manager中的Queue</span></span><br><span class="line">    po = Pool()</span><br><span class="line">    po.apply_async(writer, (q,))</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">1</span>)  <span class="comment"># 先让上面的任务向Queue存入数据，然后再让下面的任务开始从中取数据</span></span><br><span class="line"></span><br><span class="line">    po.apply_async(reader, (q,))</span><br><span class="line">    po.close()</span><br><span class="line">    po.join()</span><br><span class="line">    print(<span class="string">"(%s) End"</span> % os.getpid())</span><br></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(11095) start</span><br><span class="line">writer启动(11097),父进程为(11095)</span><br><span class="line">reader启动(11098),父进程为(11095)</span><br><span class="line">reader从Queue获取到消息：i</span><br><span class="line">reader从Queue获取到消息：t</span><br><span class="line">reader从Queue获取到消息：c</span><br><span class="line">reader从Queue获取到消息：a</span><br><span class="line">reader从Queue获取到消息：s</span><br><span class="line">reader从Queue获取到消息：t</span><br><span class="line">(11095) End</span><br></pre></td></tr></table></figure>
+
+<h1 id="案例-文件夹copy器-多进程版"><a href="#案例-文件夹copy器-多进程版" class="headerlink" title="案例:文件夹copy器(多进程版)"></a>案例:文件夹copy器(多进程版)</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_file</span><span class="params">(queue, file_name,source_folder_name,  dest_folder_name)</span>:</span></span><br><span class="line">    <span class="string">"""copy文件到指定的路径"""</span></span><br><span class="line">    f_read = open(source_folder_name + <span class="string">"/"</span> + file_name, <span class="string">"rb"</span>)</span><br><span class="line">    f_write = open(dest_folder_name + <span class="string">"/"</span> + file_name, <span class="string">"wb"</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        time.sleep(random.random())</span><br><span class="line">        content = f_read.read(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> content:</span><br><span class="line">            f_write.write(content)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    f_read.close()</span><br><span class="line">    f_write.close()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发送已经拷贝完毕的文件名字</span></span><br><span class="line">    queue.put(file_name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 获取要复制的文件夹</span></span><br><span class="line">    source_folder_name = input(<span class="string">"请输入要复制文件夹名字:"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 整理目标文件夹</span></span><br><span class="line">    dest_folder_name = source_folder_name + <span class="string">"[副本]"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建目标文件夹</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        os.mkdir(dest_folder_name)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span>  <span class="comment"># 如果文件夹已经存在，那么创建会失败</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取这个文件夹中所有的普通文件名</span></span><br><span class="line">    file_names = os.listdir(source_folder_name)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建Queue</span></span><br><span class="line">    queue = multiprocessing.Manager().Queue()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建进程池</span></span><br><span class="line">    pool = multiprocessing.Pool(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> file_name <span class="keyword">in</span> file_names:</span><br><span class="line">        <span class="comment"># 向进程池中添加任务</span></span><br><span class="line">        pool.apply_async(copy_file, args=(queue, file_name, source_folder_name, dest_folder_name))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 主进程显示进度</span></span><br><span class="line">    pool.close()</span><br><span class="line"></span><br><span class="line">    all_file_num = len(file_names)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        file_name = queue.get()</span><br><span class="line">        <span class="keyword">if</span> file_name <span class="keyword">in</span> file_names:</span><br><span class="line">            file_names.remove(file_name)</span><br><span class="line"></span><br><span class="line">        copy_rate = (all_file_num-len(file_names))*<span class="number">100</span>/all_file_num</span><br><span class="line">        print(<span class="string">"\r%.2f...(%s)"</span> % (copy_rate, file_name) + <span class="string">" "</span>*<span class="number">50</span>, end=<span class="string">""</span>)</span><br><span class="line">        <span class="keyword">if</span> copy_rate &gt;= <span class="number">100</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文作者：Duvin</p>
+
+          
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://duvin0512.github.io./2020/06/30/python-socket04/>https://duvin0512.github.io./2020/06/30/python-socket04/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-30T15:07:08+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jun 30, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>python</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>网络编程</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/30/python-socket04/&title=多线程——进程 - Duvin's Blog&summary=
+进程以及状态
+进程的创建-multiprocessing
+进程、线程对比
+进程间通信-Queue
+进程的创建进程池Pool
+案例:文件夹copy器(多进程版)
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/30/python-socket04/&title=多线程——进程 - Duvin's Blog&summary=
+进程以及状态
+进程的创建-multiprocessing
+进程、线程对比
+进程间通信-Queue
+进程的创建进程池Pool
+案例:文件夹copy器(多进程版)
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/30/python-socket04/&title=多线程——进程 - Duvin's Blog&summary=
+进程以及状态
+进程的创建-multiprocessing
+进程、线程对比
+进程间通信-Queue
+进程的创建进程池Pool
+案例:文件夹copy器(多进程版)
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/06/30/djago01/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>djago01</p>
+                <p class='content'>
+</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/06/29/python-socket03/'>
+                <p class='title'>多任务——线程<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+线程⭐
+线程-注意点
+多线程-共享全局变量⭐
+多线程-共享全局变量-问题
+同步
+互斥锁⭐
+死锁
+案例:多任务版udp聊天器
+
+
+
+线程⭐python的thread模块是比较底层的模块，pyth...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '多线程——进程',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能"><span class="toc-number">1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义的不同"><span class="toc-number">2.</span> <span class="toc-text">定义的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">3.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优缺点"><span class="toc-number">4.</span> <span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程池Pool"><span class="toc-number">5.</span> <span class="toc-text">进程池Pool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程池中的Queue"><span class="toc-number">6.</span> <span class="toc-text">进程池中的Queue</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='814812699'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="https://duvin0512.github.io./"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:duvin0512@gmail.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/Duvin0512"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/playlist?id=814812699"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        Use
+        <a href="https://volantis.js.org/" target="_blank" class="codename">volantis</a>
+        as theme, total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://duvin0512.github.io./">Copyright © 2017-2020 Duvin</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/35F12181-F0E9-45BD-B134-37E4B4A660CF.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/2884F904-F1F3-479E-AE27-5EBC291B63B0.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/298468D7-E388-44A8-8CC5-8213BDC33CED.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

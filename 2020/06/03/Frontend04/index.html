@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>CSS3样式01 - Duvin&#39;s Blog</title>
+  
+    <meta name="keywords" content="HTML5,CSS3">
+  
+  
+    <meta name="description" content="
+CSS基础选择器
+CSS字体属性
+CSS文本属性
+CSS引入方式
+">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="/images/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            Duvin
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>主页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/06/03/Frontend04/">
+      CSS3样式01
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://duvin0512.github.io/" target="_blank" rel="nofollow noopener">
+    <img src="https://n.sinaimg.cn/sinacn19/546/w690h656/20180401/4dc4-fyssmme4607031.jpg">
+    <p>Duvin</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>前端</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 3, 2020</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <ul>
+<li>CSS基础选择器</li>
+<li>CSS字体属性</li>
+<li>CSS文本属性</li>
+<li>CSS引入方式</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="1-CSS简介"><a href="#1-CSS简介" class="headerlink" title="1. CSS简介"></a>1. CSS简介</h1><h2 id="1-3-CSS语法规范"><a href="#1-3-CSS语法规范" class="headerlink" title="1.3 CSS语法规范"></a>1.3 CSS语法规范</h2><p>CSS规则由两个主要的部分构成:选择器以及一条或多条声明。</p>
+<ul>
+<li>选择器是用于指定CSS样式的HTML标签,花括号内是对该对象设置的具体样式</li>
+<li>属性和属性值以“键值对”的形式出现</li>
+<li>属性是对指定的对象设置的样式属性,例如字体大小、文本颜色等</li>
+<li>属性和属性值之间用英文“：”分开</li>
+<li>多个“键值对”之间用英文“；” 进行区分</li>
+</ul>
+<h1 id="2-CSS基础选择器"><a href="#2-CSS基础选择器" class="headerlink" title="2.CSS基础选择器"></a>2.CSS基础选择器</h1><h2 id="2-1-CSS选择器的作用"><a href="#2-1-CSS选择器的作用" class="headerlink" title="2.1 CSS选择器的作用"></a>2.1 CSS选择器的作用</h2><p>选择器(选择符)就是根据不同需求把不同的标签选出来这就是选择器的作用。简单来说,就是选择标签用的。</p>
+<h2 id="2-2-选择器分类"><a href="#2-2-选择器分类" class="headerlink" title="2.2 选择器分类"></a>2.2 选择器分类</h2><p>选择器分为基础选择器和复合选择器两个大类,先了解一下基础选择器。</p>
+<ul>
+<li>基础选择器是由单个选择器组成的</li>
+<li>基础选择器又包括:标签选择器、类选择器、id选择器和通配符选择器</li>
+</ul>
+<h2 id="2-3-标签选择器"><a href="#2-3-标签选择器" class="headerlink" title="2.3 标签选择器"></a>2.3 标签选择器</h2><p>标签选择器(元素选择器)是指用HTML标签名称作为选择器,按标签名称分类,为页面中某一类标签指定统一的CSS样式。</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>标签选择器可以把某一类标签全部选择出来,比如所有的<code>&lt;div&gt;</code>标签和所有的<code>&lt;span&gt;</code>标签。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>能快速为页面中同类型的标签统一设置样式。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>不能设计差异化样式,只能选择全部的当前标签。</p>
+<h2 id="2-4-类选择器"><a href="#2-4-类选择器" class="headerlink" title="2.4 类选择器"></a>2.4 类选择器</h2><p>如果想要差异化选择不同的标签,单独选一个或者某几个标签,可以使用类选择器</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.类名&#123;</span><br><span class="line">属性1: 属性值1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结构需要用class属性来调用class类的意思</p>
+<p><code>&lt;div class-&#39;red&#39;&gt;变红色&lt;/div&gt;</code></p>
+<p>类选择器在HTML中以class属性表示，在CSS中,类选择器以一个点”.” 号显示</p>
+<p><strong>注意</strong></p>
+<ol>
+<li>类选择器使用”.”( 英文点号)进行标识,后面紧跟类名(自定义,自己命名的) .</li>
+<li>可以理解为给这个标签起了一个名字,来表示。</li>
+<li>长名称或词组可以使用中横线来为选择器命名。</li>
+<li>不要使用纯数字、中文等命名,尽量使用英文字母来表示</li>
+<li>命名要有意义。尽量使别人一跟就知道这个类名的目的。</li>
+</ol>
+<p>记忆口诀:样式点定义,结构类调用。一个或多个,开发最常用。</p>
+<h3 id="2-4-1-多类名"><a href="#2-4-1-多类名" class="headerlink" title="2.4.1 多类名"></a>2.4.1 多类名</h3><ol>
+<li>多类名使用方式</li>
+</ol>
+<p><code>&lt;div class=&quot;red font20&quot;&gt;亚瑟&lt;/div&gt;</code></p>
+<p>(1)在标签class属性中写多个类名<br>(2)多个类名中间必须用空格分开<br>(3)这个标签就可以分别具有这些类名的样式</p>
+<ol start="2">
+<li>多类名开发中使用场景</li>
+</ol>
+<p>(1)可以把一些标签元素相同的样式(共同的部分)放到一个类里面.<br>(2)这些标签都可以调用这个公共的类然后再调用自己独有的类.<br>(3)从而节省CSS代码统一修改也非常方便</p>
+<h2 id="2-5-id选择器"><a href="#2-5-id选择器" class="headerlink" title="2.5 id选择器"></a>2.5 id选择器</h2><p>id选择器可以为标有特定id的HTML元素指定特定的样式。</p>
+<p>HTML元素以id属性来设置id选择器, CSS中id选择器以“#”来定义。</p>
+<p><code>#id名{
+属性1: 属性值1;
+}</code></p>
+<p>例如,将id为nav元素中的内容设置为红色。</p>
+<p><code>#nav {
+color: red;
+}</code></p>
+<p>注意:id属性只能在每个HTML文档中出现一次。口诀:样式#定义,結构id调用,只能调用一次,别人切勿使用。</p>
+<p><strong><em>id选择器和类选择器的区别</em></strong></p>
+<ul>
+<li>类选择器(class)好比人的名字,一个人可以有多个名字,同时一个名字也可以被多个人使用。</li>
+<li>id选择器好比人的身份证号码,全中国是唯一的,不得重复。</li>
+<li>id选择器和类选择器最大的不同在于使用次数上。</li>
+<li>类选择器在修改样式中用的最多,id选择器一般用于页面唯一性的元素上。经常和JavaScript搭配使用。</li>
+</ul>
+<h2 id="2-6-通配符选择器"><a href="#2-6-通配符选择器" class="headerlink" title="2.6 通配符选择器"></a>2.6 通配符选择器</h2><p>在CSS中,通配符选择器使用“*”定义,它表示选取页面中所有元素(标签) .</p>
+<p><code>*{
+    属性1:属性值1;
+}</code></p>
+<ul>
+<li>通配符选择器不需要调用，目动就给所有的元素使用样式</li>
+<li>特殊情况才使用,后面讲解使用场景以下是清除所有的元素标签的内外边距</li>
+</ul>
+<p><code>* {
+    margin: 0;
+    paddingt 0;
+}</code></p>
+<h1 id="3-CSS字体属性"><a href="#3-CSS字体属性" class="headerlink" title="3. CSS字体属性"></a>3. CSS字体属性</h1><p>CSS Fonts(字体)属性用于定义字体系列，大小粗细、和文字样式(如斜体)。</p>
+<h2 id="3-1-字体系列"><a href="#3-1-字体系列" class="headerlink" title="3.1 字体系列"></a>3.1 字体系列</h2><p>CSS使用font-family属性定义文本的字体系列。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">P &#123; font-family: "微软雅黑";&#125;</span><br><span class="line">div &#123;font- family: Arial, "Microsoft Yahei", "微软雅黑";&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>各种字体之间必须使用英文状态下的逗号隔开</li>
+<li>一般情况下，如果有空格隔开的多个单词组成的字体加引号.</li>
+<li>尽量使用系统默认自带字体,保证在任何用户的浏览器中都能正确显示</li>
+<li>最常见的几个字体: body(font family, “Microsoft YaHei”,tahoma,arial,’HiraginoSans GB’;}</li>
+</ul>
+<h2 id="3-2-字体大小"><a href="#3-2-字体大小" class="headerlink" title="3.2 字体大小"></a>3.2 字体大小</h2><p>CSS使用font-size属性定义字体大小。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P &#123;</span><br><span class="line">    font-size: 20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>px(像素)大小是我们网页的最常用的单位</li>
+<li>谷歌浏览器默认的文字大小为16px</li>
+<li>不同浏览器可能默认显示的字号大小不一致,我们尽量给一个明确值大小,不要默认大小</li>
+<li>可以给body指定整个页面文字的大小</li>
+</ul>
+<h2 id="3-3-字体粗细"><a href="#3-3-字体粗细" class="headerlink" title="3.3 字体粗细"></a>3.3 字体粗细</h2><p>CSS使用font-welight属性设置文本字体的粗细。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P &#123;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal</td>
+<td>默认值(不加粗的)</td>
+</tr>
+<tr>
+<td>bold</td>
+<td>定义粗体(加粗的)</td>
+</tr>
+<tr>
+<td>100-900</td>
+<td>400 等同于normal,而700等同于bold 注意这个数字后面不跟单位</td>
+</tr>
+</tbody></table>
+<h2 id="3-4-文字样式"><a href="#3-4-文字样式" class="headerlink" title="3.4 文字样式"></a>3.4 文字样式</h2><p>CSS使用font-style属性设置文本的风格。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P &#123;</span><br><span class="line">    font-style: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal</td>
+<td>默认值，浏览器会显示标准的字体样式font-style: normal;</td>
+</tr>
+<tr>
+<td>italic</td>
+<td>浏览器会显示斜体的字体样式。</td>
+</tr>
+</tbody></table>
+<p>注意:平时我们很少给文字加斜体,反而要给斜体标签(em,i)改为不倾斜字体。</p>
+<h2 id="3-5-字体复合属性"><a href="#3-5-字体复合属性" class="headerlink" title="3.5 字体复合属性"></a>3.5 字体复合属性</h2><p>字体属性可以把以上文字样式综合来写，这样可以更节约代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    font: font-style font-weight font-size/line-height font-family;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用font属性时,必须按上面语法格式中的顺序书写。<strong>不能更换顺序</strong>,并且各个属性间以空格隔开</li>
+<li>不需要设置的属性可以省略(取默认值),但<strong>必须保留font-size和font-family属性</strong>,否则font属性将不起作用</li>
+</ul>
+<h1 id="4-CSS文本属性"><a href="#4-CSS文本属性" class="headerlink" title="4. CSS文本属性"></a>4. CSS文本属性</h1><p>CSS Text(文本)属性可定义文本的外观,比如文本的颜色、对齐文本、装饰文本、文本缩进、行间距等。</p>
+<h2 id="4-1-文本颜色"><a href="#4-1-文本颜色" class="headerlink" title="4.1 文本颜色"></a>4.1 文本颜色</h2><p>color属性用于定义文本的颜色。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>表示表示</th>
+<th>属性值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>预定义的颜色值</td>
+<td>red,green,blue,pink</td>
+</tr>
+<tr>
+<td>十六进制</td>
+<td>#FF000O,#FF6600,#29D794</td>
+</tr>
+<tr>
+<td>RGB代码</td>
+<td>r(255,0.0)或(g(1006.0%,09%0)</td>
+</tr>
+</tbody></table>
+<p>开发中最常用的是十六进制</p>
+<h2 id="4-2-对齐文本"><a href="#4-2-对齐文本" class="headerlink" title="4.2 对齐文本"></a>4.2 对齐文本</h2><p>text-align属性用于设置元素内文本内容的水平对齐方式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>left</td>
+<td>左对齐(默认值)</td>
+</tr>
+<tr>
+<td>right</td>
+<td>右对齐</td>
+</tr>
+<tr>
+<td>center</td>
+<td>居中对齐</td>
+</tr>
+</tbody></table>
+<h2 id="4-3-装饰文本"><a href="#4-3-装饰文本" class="headerlink" title="4.3 装饰文本"></a>4.3 装饰文本</h2><p>text-decoration属性规定添加到文本的修饰。可以给文本添加下划线、删除线、上划线等。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    text-decoration: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>属性值 | 描述<br>none | 默认。没有装饰线(最常用)<br>underline | 下划线。链接a自带下划线(常用)<br>overline | 上划线。(几乎不用)<br>line through | 删除线。(不常用)</p>
+<h2 id="4-4-文本缩进"><a href="#4-4-文本缩进" class="headerlink" title="4.4 文本缩进"></a>4.4 文本缩进</h2><p>text-indent属性用来指定文本的第一行的缩进,通常是将段落的首行缩进。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    text- indent: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过设置该属性,所有元素的第一行都可以缩进一个给定的长度 ,甚至该长度可以是负值。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P &#123;</span><br><span class="line">    text-indent: 2em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>em是一个相对单位,就是当前元素(font-size)1个文字的大小，如果当前元素没有设置大小，则会按照父元素的1个文字大小。</p>
+<h2 id="4-5-行间距"><a href="#4-5-行间距" class="headerlink" title="4.5 行间距"></a>4.5 行间距</h2><p>line-height属性用于设置行间的距离(行高)。可以控制文字行与行之间的距离。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P &#123;</span><br><span class="line">    line-height: 26px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-CSS引入方式"><a href="#5-CSS引入方式" class="headerlink" title="5. CSS引入方式"></a>5. CSS引入方式</h1><h2 id="5-1-CSS的三种样式表"><a href="#5-1-CSS的三种样式表" class="headerlink" title="5.1 CSS的三种样式表"></a>5.1 CSS的三种样式表</h2><p>按照CSS样式书写的位置(或者引入的方式),CSS样式表可以分为三大类:</p>
+<ol>
+<li>行内样式表(行内式)</li>
+<li>内部样式表(嵌入式)</li>
+<li>外部样式表(链接式)</li>
+</ol>
+<p>内部样式表(内嵌样式表)是写到html页面内部是将所有的CSS代码抽取出来.单独放到一个<code>&lt;style&gt;</code>标签中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    div &#123;</span><br><span class="line">        color: red;</span><br><span class="line">        font-size: 12px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;style&gt;</code> 标签理论上可以放在HTML文档的任何地方,但般会放在文档的<code>&lt;head&gt;</code>标签中</li>
+<li>通过此种方式,可以方便控制当前整个页面中的元素样式设置</li>
+<li>代码结构清晰。但是并没有实现结构与样式完全分离</li>
+<li>使用内部样式表设定 CSS ,通常也被称为嵌入式引入</li>
+</ul>
+<p>行内样式表(内联样式表)是在元素标签内部的style属性中设定CSS样式。适合于修改简单样式</p>
+<p><code>&lt;div stylem&quot;color: red; font-size: 12px;&quot;&gt;青春不常在，抓紧谈恋爱&lt;/div&gt;</code></p>
+<ul>
+<li>style其实就是标签的属性</li>
+<li>在双引号中间,写法要符合CSS规范</li>
+<li>可以控制当前的标签设置样式</li>
+<li>由于书写繁琐,并且没有体现出结构与样式相分离的思想,所以不推荐大量使用,只有对当前元素添加简<br>单样式的时候,可以考虑使用</li>
+<li>使用行内样式表设定CSS,通常也被称为行内式引入</li>
+</ul>
+<h2 id="5-4-外部样式表"><a href="#5-4-外部样式表" class="headerlink" title="5.4 外部样式表"></a>5.4 外部样式表</h2><p>实际开发都是外部样式表。适合于样式比较多的情况核心是:样式单独写到CSS文件中,之后把CSS文件引入到HTML页面中使用</p>
+<p>引入外部样式表分为两步:</p>
+<ol>
+<li>新建一个后缀名为.CSS的样式文件,把所有CSS代码都放入此文件中。</li>
+<li>在HTML页面中,使用<code>&lt;link&gt;</code>标签引入这个文件。</li>
+</ol>
+<p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css文件路径&quot;&gt;</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rel</td>
+<td>定义当前文档与被链接文档之间的关系。在这里需要指定为”stylesheet”, 表示被链接的文档是一个样式表文件。</td>
+</tr>
+<tr>
+<td>href</td>
+<td>定义所链接外部样式表文件的URL,可以是相对路径，也可以是绝对路径。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>使用外部样式表设定CSS ,通常也被称为外链式或链接式引入，这种方式是开发中常用的方式</li>
+</ul>
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>本文作者：Duvin</p>
+
+          
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://duvin0512.github.io./2020/06/03/Frontend04/>https://duvin0512.github.io./2020/06/03/Frontend04/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+      
+        <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        >
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-03T17:19:44+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jun 3, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/HTML5/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>HTML5</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CSS3/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>CSS3</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://duvin0512.github.io./2020/06/03/Frontend04/&title=CSS3样式01 - Duvin's Blog&summary=
+CSS基础选择器
+CSS字体属性
+CSS文本属性
+CSS引入方式
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://duvin0512.github.io./2020/06/03/Frontend04/&title=CSS3样式01 - Duvin's Blog&summary=
+CSS基础选择器
+CSS字体属性
+CSS文本属性
+CSS引入方式
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://duvin0512.github.io./2020/06/03/Frontend04/&title=CSS3样式01 - Duvin's Blog&summary=
+CSS基础选择器
+CSS字体属性
+CSS文本属性
+CSS引入方式
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2020/06/04/Frontend05/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>CSS3样式02</p>
+                <p class='content'>
+Emmet语法
+CSS的复合选择器
+CSS的元素显示模式
+CSS的背景
+CSS的三大特性
+
+
+
+1. Emmet语法1.1 快速生成HTML结构语法
+生成标签直接输入标签名按tab健即可,比如...</p>
+              </a>
+            
+            
+              <a class='next' href='/2020/06/01/Frontend03/'>
+                <p class='title'>前端02-HTML标签(下)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+书写表格
+无序列表
+常用input表单类型
+下拉列表表单
+使用表单元素实现注册页面
+查阅W3C文档
+
+
+
+1 表格标签1.1 表格的基本语法1234567&lt;table&gt;    &l...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'CSS3样式01',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-CSS语法规范"><span class="toc-number">1.</span> <span class="toc-text">1.3 CSS语法规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-CSS选择器的作用"><span class="toc-number">2.</span> <span class="toc-text">2.1 CSS选择器的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-选择器分类"><span class="toc-number">3.</span> <span class="toc-text">2.2 选择器分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-标签选择器"><span class="toc-number">4.</span> <span class="toc-text">2.3 标签选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#作用"><span class="toc-number">4.1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">4.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">4.3.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-类选择器"><span class="toc-number">5.</span> <span class="toc-text">2.4 类选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-多类名"><span class="toc-number">5.1.</span> <span class="toc-text">2.4.1 多类名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-id选择器"><span class="toc-number">6.</span> <span class="toc-text">2.5 id选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-通配符选择器"><span class="toc-number">7.</span> <span class="toc-text">2.6 通配符选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-字体系列"><span class="toc-number">8.</span> <span class="toc-text">3.1 字体系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-字体大小"><span class="toc-number">9.</span> <span class="toc-text">3.2 字体大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-字体粗细"><span class="toc-number">10.</span> <span class="toc-text">3.3 字体粗细</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-文字样式"><span class="toc-number">11.</span> <span class="toc-text">3.4 文字样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-字体复合属性"><span class="toc-number">12.</span> <span class="toc-text">3.5 字体复合属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-文本颜色"><span class="toc-number">13.</span> <span class="toc-text">4.1 文本颜色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-对齐文本"><span class="toc-number">14.</span> <span class="toc-text">4.2 对齐文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-装饰文本"><span class="toc-number">15.</span> <span class="toc-text">4.3 装饰文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-文本缩进"><span class="toc-number">16.</span> <span class="toc-text">4.4 文本缩进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-行间距"><span class="toc-number">17.</span> <span class="toc-text">4.5 行间距</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-CSS的三种样式表"><span class="toc-number">18.</span> <span class="toc-text">5.1 CSS的三种样式表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-外部样式表"><span class="toc-number">19.</span> <span class="toc-text">5.4 外部样式表</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='814812699'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="https://duvin0512.github.io./"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:duvin0512@gmail.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/Duvin0512"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/playlist?id=814812699"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        Use
+        <a href="https://volantis.js.org/" target="_blank" class="codename">volantis</a>
+        as theme, total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://duvin0512.github.io./">Copyright © 2017-2020 Duvin</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script defer src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B18FCBB3-67FD-48CC-B4F3-457BA145F17A.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/35F12181-F0E9-45BD-B134-37E4B4A660CF.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/00E0F0ED-9F1C-407A-9AA6-545649D919F4.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/67239FBB-E15D-4F4F-8EE8-0F1C9F3C4E7C.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/B951AE18-D431-417F-B3FE-A382403FF21B.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/AEB33F9D-7294-4CF1-B8C5-3020748A9D45.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/2884F904-F1F3-479E-AE27-5EBC291B63B0.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/10A0FCE5-36A1-4AD0-8CF0-019259A89E03.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/250662D4-5A21-4AAA-BB63-CD25CF97CFF1.jpeg", "https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/landscape/298468D7-E388-44A8-8CC5-8213BDC33CED.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('') {
+          $('').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "dogUA2FSKGTo029M1SEwGROT-MdYXbMMI",
+    appKey: "u0NdtQ8nvHoMdJPSYqm1LRxE",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.5/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  function pjax_fancybox() {
+    $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 标准 markdown 描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".article-entry").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  $(function () {
+    pjax_fancybox();
+  });
+</script>
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
